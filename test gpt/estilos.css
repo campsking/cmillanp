@@ -1,0 +1,135 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif; /* Estilo de fuente */
+}
+
+#contenedor {
+    height: 100%;
+}
+
+.seccion {
+    height: 10vh;
+    overflow: hidden;
+    transition: height 0.5s;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column; /* Ajuste para permitir la alineación vertical */
+    justify-content: center;
+    align-items: center;
+    color: white; /* Color del texto */
+}
+
+/* Escala de grises para las secciones */
+#seccion1 { background-color: #3f3f3f; }
+#seccion2 { background-color: #2f2f2f; }
+#seccion3 { background-color: #3f3f3f; }
+#seccion4 { background-color: #2f2f2f; }
+
+.seccion.activa {
+        height: 70vh;
+}
+
+.seccion h2 {
+    font-family: 'Cairo', sans-serif;
+    font-size: 24px;
+    margin: 10px 0;
+}
+
+.seccion p {
+    font-family: 'Cairo', sans-serif;
+    font-size: 16px;
+    margin: 10px 20px;
+}
+
+/* Estilos para la galería */
+
+.galeria {
+    display: none; /* Oculta la galería por defecto */
+    overflow-x: auto; /* Permite el desplazamiento horizontal */
+    white-space: nowrap; /* Asegura que los elementos estén en línea */
+    height: 100%; /* Ocupa el 100% de la altura de la sección */
+    gap: 8px;
+    background-color: #2f2f2f;
+    padding: 16px;
+}
+
+.prototipos {
+    display:none
+}
+
+.prototipos iframe {
+    margin-top: -55%;
+    margin-bottom: -60%;
+    overflow-x: auto; /* Permite el desplazamiento horizontal */
+    overflow-y: hidden;
+    border: 1px solid rgba(0, 0, 0, 0);
+    width: 380px;
+    height: 900px;
+}
+
+
+.elemento-galeria {
+    flex: 0 0 auto; /* Ajusta esto según tus necesidades */
+    /* Resto de tus estilos */
+}
+
+.elemento-galeria img {
+    width: 100%; /* Hace que la imagen ocupe todo el ancho de su contenedor */
+    height: 100%; /* Mantiene la proporción de la imagen */
+    object-fit: cover; /* Asegura que la imagen cubra todo el contenedor */
+    border-radius: 16px;
+
+}
+
+
+
+
+.seccion.activa .galeria {
+    display: flex; /* Mostrar la galería solo cuando la sección está activa */
+}
+
+.seccion.activa .prototipos {
+    display: flex; /* Mostrar la galería solo cuando la sección está activa */
+}
+
+
+
+
+
+/* Estilos específicos para cuando la sección 2 y 3 está activa */
+
+#seccion2.activa h2 {
+    display: none; /* Ocultar el título en la sección 2 cuando está activa */
+}
+#seccion3.activa h2 {
+    display: none; /* Ocultar el título en la sección 3 cuando está activa */
+}
+
+
+
+
+
+/* Estilo para todas las barras de desplazamiento */
+::-webkit-scrollbar {
+    width: 8px; /* Ancho de la barra de desplazamiento horizontal */
+    height: 8px; /* Altura de la barra de desplazamiento vertical */
+}
+
+/* Estilo para el rastro de la barra (la parte que no es el pulgar) */
+::-webkit-scrollbar-track {
+    background: transparent; /* Puedes cambiar esto si quieres un color de fondo */
+}
+
+/* Estilo para el pulgar de la barra de desplazamiento (la parte que se mueve) */
+::-webkit-scrollbar-thumb {
+    background: #888; /* Color del pulgar */
+    border-radius: 10px; /* Bordes redondeados para el pulgar */
+}
+
+/* Cambiar el color del pulgar al pasar el ratón por encima */
+::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Color del pulgar al pasar el ratón */
+}
+

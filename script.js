@@ -39,44 +39,30 @@ window.addEventListener('touchend', (event) => {
     }
 }, false);
 
+// Agregar eventos táctiles para la galería
 const galeria = document.querySelector('.galeria');
+galeria.addEventListener('touchstart', handleTouchStart, { passive: false });
+galeria.addEventListener('touchmove', handleTouchMove, { passive: false });
+galeria.addEventListener('touchend', handleTouchEnd, { passive: false });
 
-galeria.addEventListener('scroll', () => {
-    // Si el usuario está cerca del final de la galería, carga más imágenes
-    if (galeria.scrollWidth - galeria.scrollLeft === galeria.clientWidth) {
-        // Aquí va el código para añadir más imágenes a la galería
-        cargarMasImagenes(); // Esta es una función que deberás definir
-    }
-});
-
-function cargarMasImagenes() {
-    // Aquí deberías agregar más elementos de galería (`.elemento-galeria`)
-    // Puedes hacerlo creando nuevos elementos DOM y agregándolos a la galería
-}
-// Agregar funcionalidad de arrastre a la galería
-let isDragging = false;
-let startPos = 0;
-let scrollLeft;
-
-galeria.addEventListener('mousedown', (e) => {
+// Funciones para manejar el desplazamiento táctil en la galería
+function handleTouchStart(e) {
+    startX = e.touches[0].pageX;
+    startY = e.touches[0].pageY;
     isDragging = true;
-    galeria.classList.add('active');
-    startPos = e.pageX - galeria.offsetLeft;
-    scrollLeft = galeria.scrollLeft;
-});
+}
 
-window.addEventListener('mouseup', () => {
-    isDragging = false;
-    galeria.classList.remove('active');
-});
-
-galeria.addEventListener('mousemove', (e) => {
+function handleTouchMove(e) {
     if (!isDragging) return;
-    e.preventDefault();
-    const x = e.pageX - galeria.offsetLeft;
-    const walk = (x - startPos) * 2; // Multiplicador de velocidad de arrastre
-    galeria.scrollLeft = scrollLeft - walk;
-});
+    let deltaX = e.touches[0].pageX - startX;
+    let deltaY = e.touches[0].pageY - startY;
 
-// Mantener eventos de desplazamiento táctil (touch) existentes
-// ... Tu código existente de desplazamiento táctil ...
+    if (Math.abs(deltaX) > Math.abs(deltaY)) {
+        e.preventDefault(); // Previene el desplazamiento vertical solo cuando es un arrastre horizontal
+        // Código para manejar el arrastre horizontal...
+    }
+}
+
+function handleTouchEnd() {
+    isDragging = false;
+}

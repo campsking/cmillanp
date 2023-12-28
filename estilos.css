@@ -44,7 +44,7 @@ button:hover {
     transition: height 1s;
     cursor: pointer;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     color: white;
@@ -53,7 +53,7 @@ button:hover {
 
 /* color del background de las secciones */
 
-#seccion1 { background: linear-gradient(to top, #2f2f2f, #3f3f3f); }
+#seccion1 { background: linear-gradient(to bottom, #2f2f2f, #3f3f3f); }
 #seccion2 { background-color: #2f2f2f; }
 #seccion3 { background-color: #3f3f3f; }
 #seccion4 { background-color: #2f2f2f; }
@@ -307,20 +307,21 @@ button[type="submit"]:hover {
 }
 
 #seccion1 button {
-    font-size: large;
-    font-family: 'Cairo', sans-serif , bold;
-    background-color: #2f2f2f;
+    font-family: 'Cairo', sans-serif;
+    font-size: 24px;
+    margin: 10px 0;
+    background-color: rgba(0, 0, 0, 0);
     color: white; 
     border: none;
     padding: 10px 20px;
     margin: 0 5px;
     border-radius: 12px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.9s ease;
 }
 
 #seccion1 button:hover {
-    background-color: #4f4f4f; 
+    background-color: #2f2f2f; 
     color: #00e1ff;
 }
 

@@ -1,7 +1,7 @@
 function mostrarContenido(categoria) {
     const contenido = document.querySelector('#seccion1 .contenido');
     switch (categoria) {
-        case 'sobreMi':
+        case 'cmillanp':
             contenido.innerHTML = '<p>Información sobre mí...</p>';
             break;
         case 'experiencia':

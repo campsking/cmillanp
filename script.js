@@ -84,4 +84,9 @@ galeria.addEventListener('mousemove', (e) => {
     galeria.scrollLeft = scrollLeft - walk;
 });
 
+function abrirEnPantallaCompleta() {
+    if (document.documentElement.requestFullscreen) {
+        document.documentElement.requestFullscreen();
+    }
+}
 

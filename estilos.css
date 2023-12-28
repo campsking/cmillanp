@@ -101,8 +101,8 @@ button:hover {
     overflow-x: auto; /* Permite el desplazamiento horizontal */
     overflow-y: hidden;
     border: 1px solid rgba(0, 0, 0, 0);
-    width: 380px;
-    height: 900px;
+    width: 350px;
+    height: 850px;
 }
 
 #prototipo2 iframe {
@@ -111,8 +111,8 @@ button:hover {
     overflow-x: auto; /* Permite el desplazamiento horizontal */
     overflow-y: hidden;
     border: 1px solid rgba(0, 0, 0, 0);
-    width: 380px;
-    height: 900px;
+    width: 350px;
+    height: 850px;
 }
 
 .prototipos {
@@ -127,8 +127,6 @@ button:hover {
 }
 
 /* ________________________________________________________________ */
-
-
 
 
 
@@ -147,23 +145,21 @@ button:hover {
 
 
 .seccion.activa .galeria {
-    display: flex; /* Mostrar la galería solo cuando la sección está activa */
+    display: flex;
+    flex-direction: row;
 }
-
-
-
-
-
 
 
 /* Estilos específicos para cuando la sección 2 y 3 está activa */
 
 #seccion2.activa h2 {
-    display: none; /* Ocultar el título en la sección 2 cuando está activa */
+    display: flex; /* Ocultar el título en la sección 2 cuando está activa */
 }
 
 #seccion3.activa h2 {
-    display: none; /* Ocultar el título en la sección 3 cuando está activa */
+    display: flex;
+    position: relative;
+    margin-bottom: 20px;
 }
 
 #seccion4.activa #formularioContacto {

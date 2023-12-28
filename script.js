@@ -1,5 +1,7 @@
 let secciones = document.querySelectorAll('.seccion');
 let indiceSeccionActual = 0;
+let startX, startY, isDragging = false;
+const umbral = 10; // Umbral para diferenciar entre desplazamiento vertical y horizontal
 
 // Función para cambiar la sección activa
 function cambiarSeccionActiva(nuevoIndice) {
@@ -15,54 +17,33 @@ secciones.forEach((seccion, indice) => {
     seccion.addEventListener('click', () => cambiarSeccionActiva(indice));
 });
 
-// Evento de desplazamiento del ratón (scroll)
-window.addEventListener('wheel', (event) => {
-    if (event.deltaY > 0) {
-        cambiarSeccionActiva(indiceSeccionActual + 1);
-    } else {
-        cambiarSeccionActiva(indiceSeccionActual - 1);
-    }
-});
-
-// Eventos de desplazamiento táctil (touch)
-let startY = 0;
+// Eventos de desplazamiento táctil
 window.addEventListener('touchstart', (event) => {
-    startY = event.touches[0].clientY;
-}, false);
-
-window.addEventListener('touchend', (event) => {
-    let endY = event.changedTouches[0].clientY;
-    if (endY > startY) {
-        cambiarSeccionActiva(indiceSeccionActual - 1);
-    } else {
-        cambiarSeccionActiva(indiceSeccionActual + 1);
-    }
-}, false);
-
-// Agregar eventos táctiles para la galería
-const galeria = document.querySelector('.galeria');
-galeria.addEventListener('touchstart', handleTouchStart, { passive: false });
-galeria.addEventListener('touchmove', handleTouchMove, { passive: false });
-galeria.addEventListener('touchend', handleTouchEnd, { passive: false });
-
-// Funciones para manejar el desplazamiento táctil en la galería
-function handleTouchStart(e) {
-    startX = e.touches[0].pageX;
-    startY = e.touches[0].pageY;
+    startX = event.touches[0].pageX;
+    startY = event.touches[0].pageY;
     isDragging = true;
-}
+}, false);
 
-function handleTouchMove(e) {
+window.addEventListener('touchmove', (event) => {
     if (!isDragging) return;
-    let deltaX = e.touches[0].pageX - startX;
-    let deltaY = e.touches[0].pageY - startY;
+    let deltaX = event.touches[0].pageX - startX;
+    let deltaY = event.touches[0].pageY - startY;
 
-    if (Math.abs(deltaX) > Math.abs(deltaY)) {
-        e.preventDefault(); // Previene el desplazamiento vertical solo cuando es un arrastre horizontal
-        // Código para manejar el arrastre horizontal...
+    // Verificar si el desplazamiento es principalmente horizontal o vertical
+    if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > umbral) {
+        // Desplazamiento horizontal: manejar la galería
+        if (event.target.closest('.galeria')) {
+            event.preventDefault(); // Prevenir el desplazamiento vertical
+            // Aquí tu lógica para desplazar horizontalmente la galería
+        }
+    } else if (Math.abs(deltaY) > umbral) {
+        // Desplazamiento vertical: manejar el cambio de sección
+        cambiarSeccionActiva(deltaY > 0 ? indiceSeccionActual - 1 : indiceSeccionActual + 1);
     }
-}
+}, false);
 
-function handleTouchEnd() {
+window.addEventListener('touchend', () => {
     isDragging = false;
-}
+}, false);
+
+// Resto de tu lógica para la galería...

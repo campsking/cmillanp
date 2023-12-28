@@ -10,16 +10,45 @@ html, body {
     height: 100%;
 }
 
-.seccion {
-    height: 10vh;
-    overflow: hidden;
-    transition: height 0.5s;
+button {
+    font-size: large;
+    font-family: 'Cairo', sans-serif , bold;
+    background-color: #2f2f2f;
+    color: white; 
+    border: none;
+    padding: 10px 20px;
+    margin: 0 5px;
+    border-radius: 12px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #4f4f4f; 
+    color: #00e1ff;
+}
+
+.btn_proto {
     display: flex;
     flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    position: absolute;
+    gap: 8px;
+    margin: -100px;
+    
+}
+
+.seccion {
+    height: 10vh;
+    transition: height 1s;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
     color: white;
+    overflow: hidden;
 }
 
 /* color del background de las secciones */
@@ -30,11 +59,11 @@ html, body {
 #seccion4 { background-color: #2f2f2f; }
 
 .seccion.activa {
-        height: 70vh;
+    height: 70vh;
 }
 
 .seccion.inactiva {
-    position: relative;
+    height: 10vh;
 
 }
 
@@ -63,11 +92,10 @@ html, body {
     padding: 16px;
 }
 
-.prototipos {
-    display:none
-}
+/* ________________________________________________________________ */
 
-.prototipos iframe {
+
+#prototipo1 iframe {
     margin-top: -55%;
     margin-bottom: -60%;
     overflow-x: auto; /* Permite el desplazamiento horizontal */
@@ -76,6 +104,32 @@ html, body {
     width: 380px;
     height: 900px;
 }
+
+#prototipo2 iframe {
+    margin-top: -55%;
+    margin-bottom: -60%;
+    overflow-x: auto; /* Permite el desplazamiento horizontal */
+    overflow-y: hidden;
+    border: 1px solid rgba(0, 0, 0, 0);
+    width: 380px;
+    height: 900px;
+}
+
+.prototipos {
+    display: none; /* Ocultar el título en la sección 3 cuando está activa */
+}
+
+#seccion3.seccion.activa .prototipos {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    height: 60vh;
+}
+
+/* ________________________________________________________________ */
+
+
+
 
 
 .elemento-galeria {
@@ -96,9 +150,7 @@ html, body {
     display: flex; /* Mostrar la galería solo cuando la sección está activa */
 }
 
-.seccion.activa .prototipos {
-    display: flex; /* Mostrar la galería solo cuando la sección está activa */
-}
+
 
 
 
@@ -222,10 +274,10 @@ button[type="submit"]:hover {
     font-family: 'Cairo', sans-serif;
     font-size: large;
     display: flex; /* Asegura que los botones estén alineados horizontal o verticalmente */
-    justify-content: center; /* Centra los botones horizontalmente */
     align-items: center; /* Centra los botones verticalmente */
     min-height: 100px; /* Establece un mínimo de altura */
     justify-content: space-around;
+    flex-direction: column;
 }
 
 #seccion1 .contenido {
@@ -243,8 +295,7 @@ button[type="submit"]:hover {
 }
 
 #seccion1.seccion.inactiva .contenido {
-    display: flex; /* Oculta el contenido cuando la sección está inactiva */
-    position: absolute;
+    display: none
     
 }
 

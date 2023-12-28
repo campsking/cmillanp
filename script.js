@@ -90,3 +90,12 @@ function abrirEnPantallaCompleta() {
     }
 }
 
+function mostrarPrototipo(prototipoId) {
+    // Ocultar todos los prototipos
+    document.querySelectorAll('.seccion .prototipo').forEach(prototipo => {
+        prototipo.style.display = 'none';
+    });
+
+    // Mostrar el prototipo seleccionado
+    document.getElementById(prototipoId).style.display = 'block';
+}

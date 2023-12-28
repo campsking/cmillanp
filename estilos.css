@@ -219,6 +219,7 @@ button[type="submit"]:hover {
 #seccion1 {
     color: #333;
     font-family: 'Cairo', sans-serif;
+    font-size: large;
     display: flex; /* Asegura que los botones estén alineados horizontal o verticalmente */
     justify-content: center; /* Centra los botones horizontalmente */
     align-items: center; /* Centra los botones verticalmente */
@@ -227,6 +228,7 @@ button[type="submit"]:hover {
 }
 
 #seccion1 .contenido {
+    
     display: none; /* Oculta el contenido cuando la sección está inactiva */
     padding: 15px;
     color: #c4c4c4;
@@ -253,6 +255,7 @@ button[type="submit"]:hover {
 }
 
 #seccion1 button {
+    font-size: large;
     font-family: 'Cairo', sans-serif , bold;
     background-color: #2f2f2f;
     color: white; 

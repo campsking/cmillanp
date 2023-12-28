@@ -10,7 +10,15 @@
 
     <div id="contenedor">
         <section id="seccion1" class="seccion activa">
-            <h2>Bienvenido</h2>
+            <nav>
+                <button onclick="mostrarContenido('sobreMi')">Sobre Mí</button>
+                <button onclick="mostrarContenido('experiencia')">Experiencia</button>
+                <button onclick="mostrarContenido('habilidades')">Habilidades</button>
+                <button onclick="mostrarContenido('proyectos')">Proyectos</button>
+            </nav>
+            <div class="contenido">
+                <!-- El contenido se actualizará aquí -->
+            </div>
         </section>
         <section id="seccion2" class="seccion">
             <h2>Galería UIUX</h2>
@@ -36,6 +44,25 @@
         </section>
         <section id="seccion4" class="seccion">
             <h2>Contacto</h2>
+            <form id="formularioContacto">
+                <!-- Campos del formulario -->
+                <div class="campo-formulario">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" id="nombre" name="nombre" required>
+                </div>
+        
+                <div class="campo-formulario">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+        
+                <div class="campo-formulario">
+                    <label for="mensaje">Mensaje:</label>
+                    <textarea id="mensaje" name="mensaje" required></textarea>
+                </div>
+        
+                <button type="submit">Enviar</button>
+            </form>
         </section>
     </div>
     

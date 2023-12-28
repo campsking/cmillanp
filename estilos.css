@@ -2,7 +2,7 @@ body, html {
     margin: 0;
     padding: 0;
     height: 100%;
-    font-family: Arial, sans-serif; /* Estilo de fuente */
+    font-family: Arial, sans-serif;
 }
 
 #contenedor {
@@ -15,14 +15,15 @@ body, html {
     transition: height 0.5s;
     cursor: pointer;
     display: flex;
-    flex-direction: column; /* Ajuste para permitir la alineación vertical */
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    color: white; /* Color del texto */
+    color: white;
 }
 
-/* Escala de grises para las secciones */
-#seccion1 { background-color: #00e1ff; }
+/* color del background de las secciones */
+
+#seccion1 { background: linear-gradient(to top, #2f2f2f, #3f3f3f); }
 #seccion2 { background-color: #2f2f2f; }
 #seccion3 { background-color: #3f3f3f; }
 #seccion4 { background-color: #2f2f2f; }
@@ -30,6 +31,12 @@ body, html {
 .seccion.activa {
         height: 70vh;
 }
+
+.seccion.inactiva {
+    position: relative;
+
+}
+
 
 .seccion h2 {
     font-family: 'Cairo', sans-serif;
@@ -84,8 +91,6 @@ body, html {
 }
 
 
-
-
 .seccion.activa .galeria {
     display: flex; /* Mostrar la galería solo cuando la sección está activa */
 }
@@ -103,11 +108,14 @@ body, html {
 #seccion2.activa h2 {
     display: none; /* Ocultar el título en la sección 2 cuando está activa */
 }
+
 #seccion3.activa h2 {
     display: none; /* Ocultar el título en la sección 3 cuando está activa */
 }
 
-
+#seccion4.activa #formularioContacto {
+    display: block; /* Muestra el formulario cuando la sección 4 está activa */
+}
 
 
 
@@ -131,5 +139,133 @@ body, html {
 /* Cambiar el color del pulgar al pasar el ratón por encima */
 ::-webkit-scrollbar-thumb:hover {
     background: #555; /* Color del pulgar al pasar el ratón */
+}
+
+
+
+/* Estilos base para el formulario */
+
+#formularioContacto {
+    font-family: 'Cairo', sans-serif;
+    display: none;
+    margin: auto;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.campo-formulario {
+    margin-bottom: 15px;
+    width: 80vh;
+}
+
+.campo-formulario label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.campo-formulario input[type="text"],
+.campo-formulario input[type="email"],
+.campo-formulario textarea {
+    width: 100%;
+    padding: 8px;
+    border-radius: 8px;
+    background-color: #2f2f2f; /* Fondo oscuro */
+    color: white; /* Texto blanco */
+    border: 1px solid #4f4f4f; /* Borde sutil */
+}
+
+
+.campo-formulario textarea {
+    height: 100px;
+    background-color: #2f2f2f;
+}
+
+button[type="submit"] {
+    background-color: #3f3f3f;
+    color: #ffffff;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    width: 30vh;
+    border-radius: 12px;
+}
+
+button[type="submit"]:hover {
+    background-color: #4f4f4f;
+    width: 30vh;
+    color: #00e1ff;
+}
+
+/* Media queries para diferentes tamaños de pantalla */
+
+@media (min-width: 60vh) {
+    #formularioContacto {
+        max-width: 550vh;
+    }
+}
+
+@media (max-width: 80vh) {
+    #formularioContacto {
+        width: 90%;
+    }
+}
+
+
+
+
+
+/* Estilos generales para la sección 1 */
+
+#seccion1 {
+    color: #333;
+    font-family: 'Cairo', sans-serif;
+    display: flex; /* Asegura que los botones estén alineados horizontal o verticalmente */
+    justify-content: center; /* Centra los botones horizontalmente */
+    align-items: center; /* Centra los botones verticalmente */
+    min-height: 100px; /* Establece un mínimo de altura */
+    justify-content: space-around;
+}
+
+#seccion1 .contenido {
+    display: none; /* Oculta el contenido cuando la sección está inactiva */
+    padding: 15px;
+    color: #c4c4c4;
+
+
+}
+
+#seccion1.seccion.activa .contenido {
+
+    display: flex; /* Oculta el contenido cuando la sección está inactiva */
+}
+
+#seccion1.seccion.inactiva .contenido {
+    display: flex; /* Oculta el contenido cuando la sección está inactiva */
+    position: absolute;
+    
+}
+
+
+/* Estilos para la navegación (botones) */
+
+#seccion1 nav {
+    text-align: center;
+}
+
+#seccion1 button {
+    font-family: 'Cairo', sans-serif , bold;
+    background-color: #2f2f2f;
+    color: white; 
+    border: none;
+    padding: 10px 20px;
+    margin: 0 5px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#seccion1 button:hover {
+    background-color: #4f4f4f; 
+    color: #00e1ff;
 }
 

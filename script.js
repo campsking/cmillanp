@@ -1,3 +1,22 @@
+function mostrarContenido(categoria) {
+    const contenido = document.querySelector('#seccion1 .contenido');
+    switch (categoria) {
+        case 'sobreMi':
+            contenido.innerHTML = '<p>Información sobre mí...</p>';
+            break;
+        case 'experiencia':
+            contenido.innerHTML = '<p>Detalles de mi experiencia...</p>';
+            break;
+        case 'habilidades':
+            contenido.innerHTML = '<p>Descripción de mis habilidades...</p>';
+            break;
+        case 'proyectos':
+            contenido.innerHTML = '<p>Algunos de mis proyectos destacados...</p>';
+            break;
+        // Más casos según sea necesario
+    }
+}
+
 let secciones = document.querySelectorAll('.seccion');
 let indiceSeccionActual = 0;
 let startX, startY, isDragging = false;
@@ -64,3 +83,5 @@ galeria.addEventListener('mousemove', (e) => {
     const walk = (x - startX) * 2; // Multiplicador de velocidad de arrastre
     galeria.scrollLeft = scrollLeft - walk;
 });
+
+

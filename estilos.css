@@ -1,4 +1,13 @@
-#threejs-background {
+.threejs-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Detrás del contenido */
+}
+
+.background_three {
     position: fixed;
     top: 0;
     left: 0;
@@ -12,7 +21,7 @@ html, body {
     margin: 0;
     padding: 0;
     height: 100%;
-    overflow: hidden; /* Evita barras de desplazamiento innecesarias */
+    /*overflow: hidden; /* Evita barras de desplazamiento innecesarias */
 }
 
 /* Asegúrate de que los elementos de contenido tengan un z-index mayor que -1 si es necesario */

@@ -1,19 +1,17 @@
-html, body {
-    background-color: #2f2f2f;
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-}
-
-#threejs-container {
+#threejs-background {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: -1; /* Coloca el contenedor detrás de otros elementos */
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Coloca el canvas detrás del contenido */
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden; /* Opcional, para evitar barras de desplazamiento */
 }
 
 

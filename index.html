@@ -1,106 +1,132 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
+
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Tu Landing Page</title>
-    <script src="three.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="estilos.css">
     <link href="https://fonts.googleapis.com/css2?family=Cairo&display=swap" rel="stylesheet">
-    </head>
+    <script src="three.js"></script>
+    <title>Document</title>
+</head>
+
 <body>
-    <!-- THREE -->
-    <div id="threejs-background">
-    <script>
-        const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-    
-        const renderer = new THREE.WebGLRenderer();
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        document.body.appendChild(renderer.domElement);
-    
-        const geometry = new THREE.BoxGeometry();
-        const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
-        const cube = new THREE.Mesh(geometry, material);
-        scene.add(cube);
-    
-        camera.position.z = 5;
-    
-        function animate() {
-            requestAnimationFrame(animate);
-            cube.rotation.x += 0.01;
-            cube.rotation.y += 0.01;
-            renderer.render(scene, camera);
-        }
-        animate();
-    </script>
-    </div>
-    <!--THREE -->
-        <div id="contenedor">
-        <section id="seccion1" class="seccion activa">
-            <nav>
-                <button onclick="mostrarContenido('cmillanp')">cmillanp.uiux</button>
-                <button onclick="mostrarContenido('experiencia')">Experiencia</button>
-                <button onclick="mostrarContenido('habilidades')">Habilidades</button>
-                <button onclick="mostrarContenido('proyectos')">Proyectos</button>
-            </nav>
-            <div class="contenido">
-                <!-- El contenido se actualizará aquí -->
+
+    <body>
+        <!-- THREE -->
+        <div id="threejs-background">
+            <script>
+                const scene = new THREE.Scene();
+                const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+
+                const renderer = new THREE.WebGLRenderer();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+                document.body.appendChild(renderer.domElement);
+
+                const geometry = new THREE.BoxGeometry();
+                const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+                const cube = new THREE.Mesh(geometry, material);
+                scene.add(cube);
+
+                camera.position.z = 5;
+
+                function animate() {
+                    requestAnimationFrame(animate);
+                    cube.rotation.x += 0.01;
+                    cube.rotation.y += 0.01;
+                    renderer.render(scene, camera);
+                }
+                animate();
+            </script>
+        </div>
+        <!--THREE -->
+        <div class="contenido-principal">
+            <div id="contenedor">
+                <section id="seccion1" class="seccion activa">
+                    <nav>
+                        <button onclick="mostrarContenido('cmillanp')">cmillanp.uiux</button>
+                        <button onclick="mostrarContenido('experiencia')">Experiencia</button>
+                        <button onclick="mostrarContenido('habilidades')">Habilidades</button>
+                        <button onclick="mostrarContenido('proyectos')">Proyectos</button>
+                    </nav>
+                    <div class="contenido">
+                        <!-- El contenido se actualizará aquí -->
+                    </div>
+                </section>
+                <section id="seccion2" class="seccion">
+                    <h2>Galería UIUX</h2>
+                    <div class="galeria">
+                        <div class="elemento-galeria"><img
+                                src="https://drive.google.com/uc?export=view&id=1E3LqandHjCUyTnDAhBgF5uLSeAFPD4J4"
+                                alt="Descripción de la imagen"></div>
+                        <div class="elemento-galeria"><img
+                                src="https://drive.google.com/uc?export=view&id=1vr2dc-M2sQJfwZP9bCFmq7TJf8t-kZGj"
+                                alt="Descripción de la imagen"></div>
+                        <div class="elemento-galeria"><img
+                                src="https://drive.google.com/uc?export=view&id=1rjU3z_Mx-SNXtDXe94axSoLXpr45Qax5"
+                                alt="Descripción de la imagen"></div>
+                        <div class="elemento-galeria"><img
+                                src="https://drive.google.com/uc?export=view&id=12_BmvFUYmDGbyNopP6mDB5c1FDyfkIp6"
+                                alt="Descripción de la imagen"></div>
+                        <div class="elemento-galeria"><img
+                                src="https://drive.google.com/uc?export=view&id=1DcHGkX1htwF6Vnv6045jjn4-MBvi4AWQ"
+                                alt="Descripción de la imagen"></div>
+                        <div class="elemento-galeria"><img
+                                src="https://drive.google.com/uc?export=view&id=1EGIojI6gOdrdGGe0JWq9WfXO7lPMMu_4"
+                                alt="Descripción de la imagen"></div>
+                        <div class="elemento-galeria"><img
+                                src="https://drive.google.com/uc?export=view&id=192Hd1NK9T6ym9FjUxbg01vW8VlNhNnGB"
+                                alt="Descripción de la imagen"></div>
+                        <div class="elemento-galeria"><img
+                                src="https://drive.google.com/uc?export=view&id=1nuM1YbsnpVIbXSbvLHafmdRkawx6NmCp"
+                                alt="Descripción de la imagen"></div>
+                        <!-- Repite para las demás imágenes -->
+                    </div>
+                </section>
+                <section id="seccion3" class="seccion">
+                    <h2>Prototipos</h2>
+                    <div class="prototipos">
+                        <!-- Prototipos de Figma -->
+                        <div id="prototipo1" class="prototipo">
+                            <iframe
+                                src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2FR75Hi9J1bjN5pgC6ynqTJr%2FTRIBU-2.0%3Fpage-id%3D0%253A1%26type%3Ddesign%26node-id%3D2885-7366%26viewport%3D848%252C561%252C0.03%26t%3De0c8NIQM1aCrS2nB-1%26scaling%3Dscale-down%26starting-point-node-id%3D2885%253A7366%26mode%3Ddesign"></iframe>
+                        </div>
+                        <div id="prototipo2" class="prototipo" style="display: none;">
+                            <iframe
+                                src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2FDuhLYjRIou6J58i3Oc9CwN%2FMarca-Blanca-Sunavi%3Fpage-id%3D0%253A1%26type%3Ddesign%26node-id%3D1538-3596%26viewport%3D635%252C550%252C0.06%26t%3DYUJQUd0A6iLXIoX0-1%26scaling%3Dscale-down%26starting-point-node-id%3D1538%253A3596%26mode%3Ddesign"></iframe>
+                        </div>
+                        <!-- Botones para cambiar prototipos -->
+                        <div class="btn_proto">
+                            <button onclick="mostrarPrototipo('prototipo1')">Prototipo 1</button>
+                            <button onclick="mostrarPrototipo('prototipo2')">Prototipo 2</button>
+                            <div>
+                                <div>
+                </section>
+                <section id="seccion4" class="seccion">
+                    <h2>Contacto</h2>
+                    <form id="formularioContacto">
+                        <!-- Campos del formulario -->
+                        <div class="campo-formulario">
+                            <label for="nombre">Nombre:</label>
+                            <input type="text" id="nombre" name="nombre" required>
+                        </div>
+
+                        <div class="campo-formulario">
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+
+                        <div class="campo-formulario">
+                            <label for="mensaje">Mensaje:</label>
+                            <textarea id="mensaje" name="mensaje" required></textarea>
+                        </div>
+
+                        <button type="submit">Enviar</button>
+                    </form>
+                </section>
             </div>
-        </section>
-        <section id="seccion2" class="seccion">
-            <h2>Galería UIUX</h2>
-            <div class="galeria">
-                <div class="elemento-galeria"><img src="https://drive.google.com/uc?export=view&id=1E3LqandHjCUyTnDAhBgF5uLSeAFPD4J4" alt="Descripción de la imagen"></div>
-                <div class="elemento-galeria"><img src="https://drive.google.com/uc?export=view&id=1vr2dc-M2sQJfwZP9bCFmq7TJf8t-kZGj" alt="Descripción de la imagen"></div>
-                <div class="elemento-galeria"><img src="https://drive.google.com/uc?export=view&id=1rjU3z_Mx-SNXtDXe94axSoLXpr45Qax5" alt="Descripción de la imagen"></div>
-                <div class="elemento-galeria"><img src="https://drive.google.com/uc?export=view&id=12_BmvFUYmDGbyNopP6mDB5c1FDyfkIp6" alt="Descripción de la imagen"></div>
-                <div class="elemento-galeria"><img src="https://drive.google.com/uc?export=view&id=1DcHGkX1htwF6Vnv6045jjn4-MBvi4AWQ" alt="Descripción de la imagen"></div>
-                <div class="elemento-galeria"><img src="https://drive.google.com/uc?export=view&id=1EGIojI6gOdrdGGe0JWq9WfXO7lPMMu_4" alt="Descripción de la imagen"></div>
-                <div class="elemento-galeria"><img src="https://drive.google.com/uc?export=view&id=192Hd1NK9T6ym9FjUxbg01vW8VlNhNnGB" alt="Descripción de la imagen"></div>
-                <div class="elemento-galeria"><img src="https://drive.google.com/uc?export=view&id=1nuM1YbsnpVIbXSbvLHafmdRkawx6NmCp" alt="Descripción de la imagen"></div>
-                <!-- Repite para las demás imágenes -->
-            </div>
-        </section>      
-        <section id="seccion3" class="seccion">
-            <h2>Prototipos</h2>
-            <div class="prototipos">
-                <!-- Prototipos de Figma -->
-                <div id="prototipo1" class="prototipo">
-                    <iframe src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2FR75Hi9J1bjN5pgC6ynqTJr%2FTRIBU-2.0%3Fpage-id%3D0%253A1%26type%3Ddesign%26node-id%3D2885-7366%26viewport%3D848%252C561%252C0.03%26t%3De0c8NIQM1aCrS2nB-1%26scaling%3Dscale-down%26starting-point-node-id%3D2885%253A7366%26mode%3Ddesign"></iframe>
-                </div>
-                <div id="prototipo2" class="prototipo" style="display: none;">
-                    <iframe src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2FDuhLYjRIou6J58i3Oc9CwN%2FMarca-Blanca-Sunavi%3Fpage-id%3D0%253A1%26type%3Ddesign%26node-id%3D1538-3596%26viewport%3D635%252C550%252C0.06%26t%3DYUJQUd0A6iLXIoX0-1%26scaling%3Dscale-down%26starting-point-node-id%3D1538%253A3596%26mode%3Ddesign"></iframe>
-                </div>
-                <!-- Botones para cambiar prototipos -->
-            <div class="btn_proto">
-                <button onclick="mostrarPrototipo('prototipo1')">Prototipo 1</button>
-                <button onclick="mostrarPrototipo('prototipo2')">Prototipo 2</button>
-                <div>
-                <div>
-        </section>
-        <section id="seccion4" class="seccion">
-            <h2>Contacto</h2>
-            <form id="formularioContacto">
-                <!-- Campos del formulario -->
-                <div class="campo-formulario">
-                    <label for="nombre">Nombre:</label>
-                    <input type="text" id="nombre" name="nombre" required>
-                </div>
-        
-                <div class="campo-formulario">
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-        
-                <div class="campo-formulario">
-                    <label for="mensaje">Mensaje:</label>
-                    <textarea id="mensaje" name="mensaje" required></textarea>
-                </div>
-        
-                <button type="submit">Enviar</button>
-            </form>
-        </section>
-    </div>
-    <script src="script.js"></script>
-</body>
+        </div>
+        <script src="script.js"></script>
+    </body>
+
 </html>

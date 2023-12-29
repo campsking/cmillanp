@@ -76,8 +76,15 @@ button:hover {
     color: white;
     overflow: hidden;
 }
+/*
+#seccion1 {
+    background-image: url('https://drive.google.com/uc?export=view&id=1O8KzOLOLgGwPHDIpyKaPrXS24NQfUGAo');
+    background-size: cover;
+    background-repeat: no-repeat;
+    z-index: -1;
+}____*/
 
-#seccion1 { background: none, }
+#seccion1 { background-image: linear-gradient(to bottom, #2f2f2f, #3f3f3f);}
 #seccion2 { background-color: #2f2f2f; }
 #seccion3 { background-color: #3f3f3f; }
 #seccion4 { background-color: #2f2f2f; }

@@ -99,3 +99,44 @@ function mostrarPrototipo(prototipoId) {
     // Mostrar el prototipo seleccionado
     document.getElementById(prototipoId).style.display = 'block';
 }
+
+
+
+// Crear la escena
+var scene = new THREE.Scene();
+
+// Crear la cámara
+var camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
+camera.position.z = 5;
+
+// Crear el renderizador
+var renderer = new THREE.WebGLRenderer({antialias: true});
+renderer.setSize(window.innerWidth, window.innerHeight);
+document.body.appendChild(renderer.domElement);
+
+// Crear una geometría
+var geometry = new THREE.TorusGeometry(1, 0.4, 16, 100);
+var material = new THREE.MeshNormalMaterial();
+var torus = new THREE.Mesh(geometry, material);
+scene.add(torus);
+
+// Función de animación
+function animate() {
+    requestAnimationFrame(animate);
+
+    // Animación
+    torus.rotation.x += 0.01;
+    torus.rotation.y += 0.01;
+
+    renderer.render(scene, camera);
+}
+
+// Llamada a la función de animación
+animate();
+
+// Ajustar el renderizado al cambiar el tamaño de la ventana
+window.addEventListener('resize', () => {
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+});

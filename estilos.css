@@ -1,9 +1,27 @@
 html, body {
+    background-color: #2f2f2f;
     width: 100%;
     height: 100%;
     margin: 0;
     padding: 0;
-    overflow: hidden; /* Opcional: evita barras de desplazamiento */
+    overflow: hidden;
+}
+
+#threejs-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1; /* Coloca el contenedor detrás de otros elementos */
+}
+
+
+/* Asegurarse de que el contenido se muestre por encima del canvas */
+#tuContenido {
+    position: relative;
+    z-index: 1;
+    /* Otros estilos para tu contenido */
 }
 
 #contenedor {
@@ -36,8 +54,9 @@ button:hover {
     position: absolute;
     gap: 8px;
     margin: -100px;
-    
 }
+
+/* _______________________SECCIONES__________________________ */
 
 .seccion {
     height: 10vh;
@@ -51,9 +70,7 @@ button:hover {
     overflow: hidden;
 }
 
-/* color del background de las secciones */
-
-#seccion1 { background: linear-gradient(to bottom, #2f2f2f, #3f3f3f); }
+#seccion1 { background: none, }
 #seccion2 { background-color: #2f2f2f; }
 #seccion3 { background-color: #3f3f3f; }
 #seccion4 { background-color: #2f2f2f; }
@@ -64,9 +81,7 @@ button:hover {
 
 .seccion.inactiva {
     height: 10vh;
-
 }
-
 
 .seccion h2 {
     font-family: 'Cairo', sans-serif;
@@ -74,25 +89,123 @@ button:hover {
     margin: 10px 0;
 }
 
-.seccion p {
+/* _______________BIENENIDA - SECCION 1____________________ */
+
+#seccion1 {
+    color: #333;
     font-family: 'Cairo', sans-serif;
-    font-size: 16px;
-    margin: 10px 20px;
+    font-size: large;
+    display: flex;
+    align-items: center;
+    min-height: 100px;
+    justify-content: space-around;
+    flex-direction: column;
 }
 
-/* Estilos para la galería */
+#seccion1 .contenido {
+    display: none;
+    padding: 15px;
+    color: #c4c4c4;
+}
+
+#seccion1.seccion.activa .contenido {
+    display: flex;
+}
+
+#seccion1.seccion.inactiva .contenido {
+    display: none
+}
+
+
+/* Estilos para la navegación (botones) */
+
+#seccion1 nav {
+    text-align: center;
+}
+
+#seccion1 button {
+    font-family: 'Cairo', sans-serif;
+    font-size: 24px;
+    margin: 10px 0;
+    background-color: rgba(0, 0, 0, 0);
+    color: white; 
+    border: none;
+    padding: 10px 20px;
+    margin: 0 5px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background-color 0.9s ease;
+}
+
+#seccion1 button:hover {
+    background-color: #2f2f2f; 
+    color: #00e1ff;
+}
+/* ______________________GALERIA - SECCION 2___________________________________ */
 
 .galeria {
-    display: none; /* Oculta la galería por defecto */
-    overflow-x: auto; /* Permite el desplazamiento horizontal */
-    white-space: nowrap; /* Asegura que los elementos estén en línea */
-    height: 100%; /* Ocupa el 100% de la altura de la sección */
+    display: none;
+    overflow-x: auto;
+    white-space: nowrap;
+    height: 100%;
     gap: 8px;
     background-color: #2f2f2f;
     padding: 16px;
 }
 
-/* ________________________________________________________________ */
+.elemento-galeria {
+    flex: 0 0 auto; 
+}
+
+.elemento-galeria img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 16px;
+}
+
+.seccion.activa .galeria {
+    display: flex;
+    flex-direction: row;
+}
+
+#seccion2.activa h2 {
+    display: flex; /* Ocultar el título en la sección 2 cuando está activa */
+}
+
+#seccion3.activa h2 {
+    display: flex;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+#seccion4.activa #formularioContacto {
+    display: block; /* Muestra el formulario cuando la sección 4 está activa */
+}
+
+/* Estilo para todas las barras de desplazamiento */
+::-webkit-scrollbar {
+    width: 8px; /* Ancho de la barra de desplazamiento horizontal */
+    height: 8px; /* Altura de la barra de desplazamiento vertical */
+}
+
+/* Estilo para el rastro de la barra (la parte que no es el pulgar) */
+::-webkit-scrollbar-track {
+    background: transparent; /* Puedes cambiar esto si quieres un color de fondo */
+}
+
+/* Estilo para el pulgar de la barra de desplazamiento (la parte que se mueve) */
+::-webkit-scrollbar-thumb {
+    background: #888; /* Color del pulgar */
+    border-radius: 10px; /* Bordes redondeados para el pulgar */
+}
+
+/* Cambiar el color del pulgar al pasar el ratón por encima */
+::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Color del pulgar al pasar el ratón */
+}
+
+/* ____________________PROTOTIPOS FIGMA - SECCION 3_________________________________ */
 
 
 #prototipo1 iframe {
@@ -126,73 +239,7 @@ button:hover {
     height: 60vh;
 }
 
-/* ________________________________________________________________ */
-
-
-
-.elemento-galeria {
-    flex: 0 0 auto; /* Ajusta esto según tus necesidades */
-    /* Resto de tus estilos */
-}
-
-.elemento-galeria img {
-    width: 100%; /* Hace que la imagen ocupe todo el ancho de su contenedor */
-    height: 100%; /* Mantiene la proporción de la imagen */
-    object-fit: cover; /* Asegura que la imagen cubra todo el contenedor */
-    border-radius: 16px;
-
-}
-
-
-.seccion.activa .galeria {
-    display: flex;
-    flex-direction: row;
-}
-
-
-/* Estilos específicos para cuando la sección 2 y 3 está activa */
-
-#seccion2.activa h2 {
-    display: flex; /* Ocultar el título en la sección 2 cuando está activa */
-}
-
-#seccion3.activa h2 {
-    display: flex;
-    position: relative;
-    margin-bottom: 20px;
-}
-
-#seccion4.activa #formularioContacto {
-    display: block; /* Muestra el formulario cuando la sección 4 está activa */
-}
-
-
-
-/* Estilo para todas las barras de desplazamiento */
-::-webkit-scrollbar {
-    width: 8px; /* Ancho de la barra de desplazamiento horizontal */
-    height: 8px; /* Altura de la barra de desplazamiento vertical */
-}
-
-/* Estilo para el rastro de la barra (la parte que no es el pulgar) */
-::-webkit-scrollbar-track {
-    background: transparent; /* Puedes cambiar esto si quieres un color de fondo */
-}
-
-/* Estilo para el pulgar de la barra de desplazamiento (la parte que se mueve) */
-::-webkit-scrollbar-thumb {
-    background: #888; /* Color del pulgar */
-    border-radius: 10px; /* Bordes redondeados para el pulgar */
-}
-
-/* Cambiar el color del pulgar al pasar el ratón por encima */
-::-webkit-scrollbar-thumb:hover {
-    background: #555; /* Color del pulgar al pasar el ratón */
-}
-
-
-
-/* Estilos base para el formulario */
+/* _______________________CONTACTO - SECCION 4______________________________*/
 
 #formularioContacto {
     font-family: 'Cairo', sans-serif;
@@ -223,7 +270,6 @@ button:hover {
     border: 1px solid #4f4f4f; /* Borde sutil */
 }
 
-
 .campo-formulario textarea {
     height: 100px;
     background-color: #2f2f2f;
@@ -245,7 +291,7 @@ button[type="submit"]:hover {
     color: #00e1ff;
 }
 
-/* Media queries para diferentes tamaños de pantalla */
+/* __________Media queries para diferentes tamaños de pantalla___________ */
 
 @media (min-width: 60vh) {
     #formularioContacto {
@@ -257,67 +303,5 @@ button[type="submit"]:hover {
     #formularioContacto {
         width: 90%;
     }
-}
-
-
-
-
-
-/* Estilos generales para la sección 1 */
-
-#seccion1 {
-    color: #333;
-    font-family: 'Cairo', sans-serif;
-    font-size: large;
-    display: flex; /* Asegura que los botones estén alineados horizontal o verticalmente */
-    align-items: center; /* Centra los botones verticalmente */
-    min-height: 100px; /* Establece un mínimo de altura */
-    justify-content: space-around;
-    flex-direction: column;
-}
-
-#seccion1 .contenido {
-    
-    display: none; /* Oculta el contenido cuando la sección está inactiva */
-    padding: 15px;
-    color: #c4c4c4;
-
-
-}
-
-#seccion1.seccion.activa .contenido {
-
-    display: flex; /* Oculta el contenido cuando la sección está inactiva */
-}
-
-#seccion1.seccion.inactiva .contenido {
-    display: none
-    
-}
-
-
-/* Estilos para la navegación (botones) */
-
-#seccion1 nav {
-    text-align: center;
-}
-
-#seccion1 button {
-    font-family: 'Cairo', sans-serif;
-    font-size: 24px;
-    margin: 10px 0;
-    background-color: rgba(0, 0, 0, 0);
-    color: white; 
-    border: none;
-    padding: 10px 20px;
-    margin: 0 5px;
-    border-radius: 12px;
-    cursor: pointer;
-    transition: background-color 0.9s ease;
-}
-
-#seccion1 button:hover {
-    background-color: #2f2f2f; 
-    color: #00e1ff;
 }
 

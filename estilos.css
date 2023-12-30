@@ -87,10 +87,10 @@ button:hover {
     z-index: -1;
 }____*/
 
-#seccion1 { background-image: linear-gradient(to bottom, #2f2f2f, #3f3f3f);}
-#seccion2 { background-color: #2f2f2f; }
-#seccion3 { background-color: #3f3f3f; }
-#seccion4 { background-color: #2f2f2f; }
+#seccion1 { background-image: linear-gradient(to bottom, #1f1f1f, #2f2f2f) }
+#seccion2 { background-color: #1f1f1f; }
+#seccion3 { background-color: #2f2f2f; }
+#seccion4 { background-color: #1f1f1f; }
 
 .seccion.activa {
     height: 70vh;
@@ -130,6 +130,9 @@ button:hover {
     justify-content: center;
     gap: 16px;
     overflow-y: auto;
+    max-height: 90vh;
+    overflow-x: hidden;
+    height: 80%
 }
 
 #seccion1.seccion.inactiva .contenido {
@@ -148,14 +151,16 @@ button:hover {
     border-radius: 10px;
     padding: 24px;
     max-width: 400px;
-    min-width: 330px;
-    min-height: 200px;
+    /* min-width: 330px; */
+    /* min-height: 200px; */
     position: relative;
-    /* box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); */
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: transform 0.5s ease, box-shadow 0.5s ease;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    background-color: #2f2f2f;
+    
 }
 
 .card-icon {
@@ -185,7 +190,11 @@ button:hover {
 
 .card:hover {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-    transform: scale(1.05);
+    transform: scale(1.01);
+}
+
+#contenido {
+    flex-basis: calc(100% / 2);
 }
 
 
@@ -200,7 +209,6 @@ button:hover {
     white-space: nowrap;
     height: 100%;
     gap: 8px;
-    background-color: #2f2f2f;
     padding: 16px;
 }
 
@@ -260,23 +268,25 @@ button:hover {
 
 
 #prototipo1 iframe {
-    margin-top: -55%;
-    margin-bottom: -60%;
+    /* margin-top: -55%;
+    margin-bottom: -60%; */
     overflow-x: auto; /* Permite el desplazamiento horizontal */
     overflow-y: hidden;
     border: 1px solid rgba(0, 0, 0, 0);
-    width: 350px;
-    height: 850px;
+    max-height: 90vh;
+    min-height: 90vh;
+    min-width: 50vh;
 }
 
 #prototipo2 iframe {
-    margin-top: -55%;
-    margin-bottom: -60%;
+    /* margin-top: -55%;
+    margin-bottom: -60%; */
     overflow-x: auto; /* Permite el desplazamiento horizontal */
     overflow-y: hidden;
     border: 1px solid rgba(0, 0, 0, 0);
-    width: 350px;
-    height: 850px;
+    max-height: 90vh;
+    min-height: 90vh;
+    min-width: 50vh;
 }
 
 .prototipos {
@@ -319,7 +329,8 @@ button:hover {
     font-family: 'Cairo', sans-serif;
     display: none;
     padding: 24px;
-    width: 90%
+    max-width: 100vh;
+    width: 90%;
 }
 
 .campo-formulario {
@@ -388,5 +399,3 @@ button[type="submit"]:hover {
 }
 
 /* __________Media queries para diferentes tamaños de pantalla___________ */
-
-

@@ -17,7 +17,7 @@
 }
 
 html, body {
-    background-color: #2f2f2f;
+    background-color: #1f1f1f;
     margin: 0;
     padding: 0;
     height: 100%;
@@ -114,13 +114,14 @@ button:hover {
     display: flex;
     align-items: center;
     min-height: 100px;
-    justify-content: space-around;
     flex-direction: column;
+    justify-content: space-between;
 }
 
 #seccion1 .contenido {
     display: none;
     color: #c4c4c4;
+    max-width: 1600px;
 }
 
 #seccion1.seccion.activa .contenido {
@@ -130,9 +131,8 @@ button:hover {
     justify-content: center;
     gap: 16px;
     overflow-y: auto;
-    max-height: 90vh;
     overflow-x: hidden;
-    height: 80%
+
 }
 
 #seccion1.seccion.inactiva .contenido {
@@ -268,8 +268,8 @@ button:hover {
 
 
 #prototipo1 iframe {
-    /* margin-top: -55%;
-    margin-bottom: -60%; */
+    margin-top: -55%;
+    margin-bottom: -60%;
     overflow-x: auto; /* Permite el desplazamiento horizontal */
     overflow-y: hidden;
     border: 1px solid rgba(0, 0, 0, 0);
@@ -279,8 +279,8 @@ button:hover {
 }
 
 #prototipo2 iframe {
-    /* margin-top: -55%;
-    margin-bottom: -60%; */
+    margin-top: -55%;
+    margin-bottom: -60%;
     overflow-x: auto; /* Permite el desplazamiento horizontal */
     overflow-y: hidden;
     border: 1px solid rgba(0, 0, 0, 0);

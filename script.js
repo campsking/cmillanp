@@ -100,5 +100,14 @@ function mostrarPrototipo(prototipoId) {
     document.getElementById(prototipoId).style.display = 'block';
 }
 
-
+document.querySelectorAll('.card').forEach(card => {
+    card.addEventListener('click', () => {
+        const extraInfo = card.querySelector('.extra-info');
+        if (extraInfo.style.display === 'none') {
+            extraInfo.style.display = 'block';
+        } else {
+            extraInfo.style.display = 'none';
+        }
+    });
+});
 

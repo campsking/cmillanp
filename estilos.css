@@ -46,7 +46,7 @@ button {
     border-radius: 12px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    min-width: 300px
+    min-width: 169px;
 }
 
 button:hover {
@@ -62,7 +62,7 @@ button:hover {
     align-items: center;
     position: absolute;
     gap: 8px;
-    margin: -100px;
+    width: 150px;
 }
 
 /* _______________________SECCIONES__________________________ */
@@ -108,7 +108,6 @@ button:hover {
 /* _______________BIENENIDA - SECCION 1____________________ */
 
 #seccion1 {
-    color: #333;
     font-family: 'Cairo', sans-serif;
     font-size: large;
     display: flex;
@@ -128,67 +127,59 @@ button:hover {
     flex-wrap: wrap;
     align-content: center;
     justify-content: center;
-    align-items: center;
+    gap: 16px;
 }
 
 #seccion1.seccion.inactiva .contenido {
     display: none
 }
 
-
-/* Estilos para la navegación (botones) */
-
-#seccion1 nav {
-    text-align: center;
+#seccion1.seccion.inactiva .h2 {
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-content: center;
-    justify-content: space-around;
-    align-items: center;
 }
 
-#seccion1 button {
-    font-family: 'Cairo', sans-serif;
-    font-size: 24px;
-    margin: 10px 0;
-    background-color: rgba(0, 0, 0, 0);
-    color: white; 
-    border: none;
-    padding: 10px 20px;
-    margin: 0 5px;
-    border-radius: 12px;
-    cursor: pointer;
-    transition: background-color 0.9s ease;
-}
 
-#seccion1 button:hover {
-    background-color: #2f2f2f; 
-    color: #00e1ff;
-}
 
 /* ______________________seccion1 cards___________________________________ */
 
 .card {
-    position: relative; /* Esto permite posicionar el icono respecto a la tarjeta */
+    border-radius: 10px;
+    padding: 16px;
+    max-width: 300px;
+    min-width: 300px;
+    min-height: 200px;
+    position: relative;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    transition: 0.3s;
-    margin: 20px;
-    width: calc(100% / 3 - 20px); /* Ajustar según la cantidad de tarjetas por fila */
-    border-radius: 16px;
-
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 16px;
 }
 
 .card-icon {
-    position: absolute; /* Posiciona el icono de manera absoluta dentro de la tarjeta */
-    top: 10px; /* Ajusta según necesites */
-    left: 10px; /* Ajusta según necesites */
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    top: 16px;
+    right: 16px;
 }
 
-.card-icon img {
-    width: 24px; /* Ajusta el tamaño según necesites */
-    height: 24px; /* Ajusta el tamaño según necesites */
-    display: block; /* Esto asegura que la imagen no tenga espacio adicional debajo */
+.card-title {
+    margin-bottom: auto; /* Asegura que el título se quede arriba */
+    font-size: 1.2em;
+}
+
+.card-content {
+    margin-top: 24px  /* Empuja el contenido hacia abajo */
+}
+
+.card-content h2 {
+    margin-top: 0;
+}
+
+.card-content p {
+    font-size: 16px;
 }
 
 .card:hover {
@@ -196,23 +187,10 @@ button:hover {
     transform: scale(1.05);
 }
 
-.card-content {
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    justify-content: flex-end;
-    min-width: auto;
-    align-items: flex-start;
-    align-content: flex-start;
-    
-}
 
-.contenido {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-}
+
+
+
 /* ______________________GALERIA - SECCION 2___________________________________ */
 
 .galeria {

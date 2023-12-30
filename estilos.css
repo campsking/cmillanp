@@ -38,7 +38,7 @@ html, body {
 button {
     font-size: large;
     font-family: 'Cairo', sans-serif , bold;
-    background-color: #2f2f2f;
+    background-color: #1f1f1f;
     color: white;
     border: none;
     border-radius: 12px;
@@ -48,11 +48,14 @@ button {
     justify-content: center;
     align-content: center;
     align-items: center;
+    padding:4px;
+    width: 70px;
+    height: 30vh;
+    
 }
 
 button:hover {
-    background-color: #4f4f4f; 
-    color: #00e1ff;
+    background-color: #3f3f3f; 
     align-self: stretch;
 }
 
@@ -90,7 +93,7 @@ button:hover {
 #seccion1 { background-image: linear-gradient(to bottom, #1f1f1f, #2f2f2f) }
 #seccion2 { background-color: #1f1f1f; }
 #seccion3 { background-color: #2f2f2f; }
-#seccion4 { background-color: #1f1f1f; }
+#seccion4 { background-color: #3f3f3f; }
 
 .seccion.activa {
     height: 70vh;
@@ -115,13 +118,13 @@ button:hover {
     align-items: center;
     min-height: 100px;
     flex-direction: column;
-    justify-content: space-between;
+
 }
 
 #seccion1 .contenido {
     display: none;
     color: #c4c4c4;
-    max-width: 1600px;
+    max-width: 1700px;
 }
 
 #seccion1.seccion.activa .contenido {
@@ -131,7 +134,7 @@ button:hover {
     justify-content: center;
     gap: 16px;
     overflow-y: auto;
-    overflow-x: hidden;
+    margin: 8px;
 
 }
 
@@ -150,7 +153,7 @@ button:hover {
 .card {
     border-radius: 10px;
     padding: 24px;
-    max-width: 400px;
+    max-width: 500px;
     /* min-width: 330px; */
     /* min-height: 200px; */
     position: relative;
@@ -158,17 +161,16 @@ button:hover {
     transition: transform 0.5s ease, box-shadow 0.5s ease;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start;
     background-color: #2f2f2f;
-    
+    align-content: flex-start;
+    align-items: flex-end;
 }
 
 .card-icon {
     width: 24px;
     height: 24px;
-    position: absolute;
-    top: 24px;
-    right: 24px;
+    position: relative;
 }
 
 .card-title {
@@ -176,9 +178,6 @@ button:hover {
     font-size: 1.2em;
 }
 
-.card-content {
-    margin-top: 24px
-}
 
 .card-content h2 {
     margin-top: 0;
@@ -273,8 +272,8 @@ button:hover {
     overflow-x: auto; /* Permite el desplazamiento horizontal */
     overflow-y: hidden;
     border: 1px solid rgba(0, 0, 0, 0);
-    max-height: 90vh;
-    min-height: 90vh;
+    max-height: 100vh;
+    min-height: 100vh;
     min-width: 50vh;
 }
 
@@ -284,8 +283,8 @@ button:hover {
     overflow-x: auto; /* Permite el desplazamiento horizontal */
     overflow-y: hidden;
     border: 1px solid rgba(0, 0, 0, 0);
-    max-height: 90vh;
-    min-height: 90vh;
+    max-height: 100vh;
+    min-height: 100vh;
     min-width: 50vh;
 }
 
@@ -324,12 +323,10 @@ button:hover {
     flex-direction: column;
 }
 
-
 #formularioContacto {
     font-family: 'Cairo', sans-serif;
     display: none;
-    padding: 24px;
-    max-width: 100vh;
+    max-width: 80vh;
     width: 90%;
 }
 
@@ -344,7 +341,7 @@ button:hover {
 
 .campo-formulario label {
     display: block;
-    /* margin-bottom: 5px; */
+    margin-bottom: 5px;
     min-height: 18px;
     font-family: 'Cairo', sans-serif;
 }
@@ -382,7 +379,7 @@ button:hover {
 }
 
 button[type="submit"] {
-    background-color: #3f3f3f;
+    background-color: #2f2f2f;
     color: #ffffff;
     border: none;
     cursor: pointer;
@@ -392,7 +389,7 @@ button[type="submit"] {
 }
 
 button[type="submit"]:hover {
-    background-color: #4f4f4f;
+    background-color: #1f1f1f;
     width: 100%;
     color: #00e1ff;
     height: 48px;

@@ -46,13 +46,12 @@ button {
     border-radius: 12px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    min-width: 169px;
+
 }
 
 button:hover {
     background-color: #4f4f4f; 
     color: #00e1ff;
-    max-width: 300px
 }
 
 .btn_proto {
@@ -62,7 +61,8 @@ button:hover {
     align-items: center;
     position: absolute;
     gap: 8px;
-    width: 150px;
+    left: 24px;
+    bottom: 120px;
 }
 
 /* _______________________SECCIONES__________________________ */
@@ -147,7 +147,7 @@ button:hover {
     border-radius: 10px;
     padding: 16px;
     max-width: 300px;
-    min-width: 300px;
+    min-width: 320px;
     min-height: 200px;
     position: relative;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
@@ -287,7 +287,7 @@ button:hover {
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    height: 60vh;
+    height: 100vh;
 }
 
 /* _______________________CONTACTO - SECCION 4______________________________*/
@@ -295,66 +295,64 @@ button:hover {
 #formularioContacto {
     font-family: 'Cairo', sans-serif;
     display: none;
-    flex-direction: column;
     padding: 24px;
-    align-items: center;
-    align-content: center;
-    flex-wrap: nowrap;
+    width: 90%
 }
 
 .campo-formulario {
     margin-bottom: 15px;
-    width: 50vh;
+    width: 100%;
+    align-self: stretch;
 }
 
 .campo-formulario label {
     display: block;
     margin-bottom: 5px;
+    width: 100%
 }
 
+#nombre {
+    padding-top: 16px;
+    width: 100%
+    
+}
+#email {
+    padding-top: 16px;
+    width: 100%
+}
 .campo-formulario input[type="text"],
 .campo-formulario input[type="email"],
 .campo-formulario textarea {
-    width: 100%;
-    padding: 8px;
     border-radius: 8px;
     background-color: #2f2f2f; /* Fondo oscuro */
     color: white; /* Texto blanco */
     border: 1px solid #4f4f4f; /* Borde sutil */
+    width: 100%
+
 }
 
 .campo-formulario textarea {
     height: 100px;
     background-color: #2f2f2f;
+    align-self: stretch;
+
 }
 
 button[type="submit"] {
     background-color: #3f3f3f;
     color: #ffffff;
-    padding: 10px 15px;
     border: none;
     cursor: pointer;
-    width: 30vh;
-    border-radius: 12px;
+    width: 100%
+
 }
 
 button[type="submit"]:hover {
     background-color: #4f4f4f;
-    width: 30vh;
+    width: 100%;
     color: #00e1ff;
 }
 
 /* __________Media queries para diferentes tamaños de pantalla___________ */
 
-@media (min-width: 300px) {
-    #formularioContacto {
-        max-width: 90vh;
-    }
-}
-
-@media (max-width: 80vh) {
-    #formularioContacto {
-        width: 90vh;
-    }
-}
 

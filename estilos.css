@@ -38,7 +38,7 @@ html, body {
 button {
     font-size: large;
     font-family: 'Cairo', sans-serif , bold;
-    /* background-color: #2f2f2f; */
+    background-color: #2f2f2f;
     color: white;
     border: none;
     border-radius: 12px;
@@ -48,8 +48,6 @@ button {
     justify-content: center;
     align-content: center;
     align-items: center;
-
-
 }
 
 button:hover {
@@ -65,8 +63,7 @@ button:hover {
     align-items: center;
     position: absolute;
     gap: 8px;
-    left: 24px;
-    bottom: 120px;
+    left: 8px;
 }
 
 /* _______________________SECCIONES__________________________ */
@@ -149,34 +146,33 @@ button:hover {
 
 .card {
     border-radius: 10px;
-    padding: 16px;
+    padding: 24px;
     max-width: 400px;
     min-width: 330px;
     min-height: 200px;
     position: relative;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    /* box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); */
     transition: transform 0.5s ease, box-shadow 0.5s ease;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    margin-bottom: 16px;
 }
 
 .card-icon {
     width: 24px;
     height: 24px;
     position: absolute;
-    top: 16px;
-    right: 16px;
+    top: 24px;
+    right: 24px;
 }
 
 .card-title {
-    margin-bottom: auto; /* Asegura que el título se quede arriba */
+    margin-bottom: auto;
     font-size: 1.2em;
 }
 
 .card-content {
-    margin-top: 24px  /* Empuja el contenido hacia abajo */
+    margin-top: 24px
 }
 
 .card-content h2 {
@@ -225,7 +221,7 @@ button:hover {
 }
 
 #seccion2.activa h2 {
-    display: flex; /* Ocultar el título en la sección 2 cuando está activa */
+    display: flex;
 }
 
 #seccion3.activa h2 {
@@ -284,7 +280,11 @@ button:hover {
 }
 
 .prototipos {
-    display: none; /* Ocultar el título en la sección 3 cuando está activa */
+    display: none;
+}
+
+.prototipos {
+    display: none;
 }
 
 #seccion3.seccion.activa .prototipos {

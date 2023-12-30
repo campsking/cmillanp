@@ -125,9 +125,10 @@ button:hover {
 #seccion1.seccion.activa .contenido {
     display: flex;
     flex-wrap: wrap;
-    align-content: center;
+    align-content: flex-start;
     justify-content: center;
     gap: 16px;
+    overflow-y: auto;
 }
 
 #seccion1.seccion.inactiva .contenido {

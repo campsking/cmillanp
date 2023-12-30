@@ -1,22 +1,3 @@
-function mostrarContenido(categoria) {
-    const contenido = document.querySelector('#seccion1 .contenido');
-    switch (categoria) {
-        case 'cmillanp':
-            contenido.innerHTML = '<p>Información sobre mí...</p>';
-            break;
-        case 'experiencia':
-            contenido.innerHTML = '<p>Detalles de mi experiencia...</p>';
-            break;
-        case 'habilidades':
-            contenido.innerHTML = '<p>Descripción de mis habilidades...</p>';
-            break;
-        case 'proyectos':
-            contenido.innerHTML = '<p>Algunos de mis proyectos destacados...</p>';
-            break;
-        // Más casos según sea necesario
-    }
-}
-
 let secciones = document.querySelectorAll('.seccion');
 let indiceSeccionActual = 0;
 let startX, startY, isDragging = false;
@@ -36,33 +17,6 @@ secciones.forEach((seccion, indice) => {
     seccion.addEventListener('click', () => cambiarSeccionActiva(indice));
 });
 
-// Eventos de desplazamiento táctil
-window.addEventListener('touchstart', (event) => {
-    startX = event.touches[0].pageX;
-    startY = event.touches[0].pageY;
-    isDragging = true;
-}, false);
-
-window.addEventListener('touchmove', (event) => {
-    if (!isDragging) return;
-    let deltaX = event.touches[0].pageX - startX;
-    let deltaY = event.touches[0].pageY - startY;
-
-    if (Math.abs(deltaX) > Math.abs(deltaY)) {
-        // Desplazamiento horizontal en la galería
-        if (event.target.closest('.galeria')) {
-            event.preventDefault(); // Prevenir el desplazamiento vertical
-            // Código para manejar el arrastre horizontal...
-        }
-    } else if (Math.abs(deltaY) > umbralVertical) {
-        // Desplazamiento vertical: cambiar de sección
-        cambiarSeccionActiva(deltaY > 0 ? indiceSeccionActual - 1 : indiceSeccionActual + 1);
-    }
-}, false);
-
-window.addEventListener('touchend', () => {
-    isDragging = false;
-}, false);
 
 // Agregar eventos para arrastre en la galería en PC
 const galeria = document.querySelector('.galeria');

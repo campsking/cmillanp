@@ -44,14 +44,42 @@ function abrirEnPantallaCompleta() {
     }
 }
 
+function togglePrototipo() {
+    var protoContainer = document.querySelector('.btn_proto');
+    var toggleButton = document.getElementById('botonMostrarProto');
+
+    if (protoContainer.style.display === 'none' || protoContainer.style.display === '') {
+        protoContainer.classList.add('boton-mostrar');
+        protoContainer.style.display = 'flex';
+        toggleButton.classList.add('boton-ocultar');
+        setTimeout(function() {
+            toggleButton.style.display = 'none';
+        }, 500); // Coincide con la duración de la animación
+    } else {
+        toggleButton.classList.remove('boton-ocultar');
+        toggleButton.style.display = 'block';
+        toggleButton.classList.add('boton-mostrar');
+        protoContainer.classList.add('boton-ocultar');
+        setTimeout(function() {
+            protoContainer.style.display = 'none';
+            protoContainer.classList.remove('boton-mostrar');
+            protoContainer.classList.remove('boton-ocultar');
+        }, 500); // Coincide con la duración de la animación
+    }
+}
+
 function mostrarPrototipo(prototipoId) {
     // Ocultar todos los prototipos
     document.querySelectorAll('.seccion .prototipo').forEach(prototipo => {
-        prototipo.style.display = 'none';
+        prototipo.style.display = 'none'; 
     });
 
     // Mostrar el prototipo seleccionado
     document.getElementById(prototipoId).style.display = 'block';
+
+    // Ocultar los botones de prototipo y mostrar el botón pequeño
+    document.querySelector('.btn_proto').style.display = 'none';
+    document.getElementById('botonMostrarProto').style.display = 'block';
 }
 
 document.querySelectorAll('.card').forEach(card => {

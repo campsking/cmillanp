@@ -36,37 +36,60 @@ html, body {
 }
 
 button {
-    font-size: large;
+    font-size: small;
     font-family: 'Cairo', sans-serif , bold;
-    background-color: #1f1f1f;
-    color: white;
+    background-color: #ff7b00;
+    color: rgb(255, 255, 255);
     border: none;
-    border-radius: 12px;
+    border-radius: 0 15px 15px 0;
     cursor: pointer;
     transition: background-color 0.3s ease;
     display: flex;
     justify-content: center;
     align-content: center;
     align-items: center;
-    padding:4px;
-    width: 70px;
-    height: 30vh;
+    padding: 16px;
+    transition: 1s ease;
     
 }
 
 button:hover {
     background-color: #3f3f3f; 
     align-self: stretch;
+    transition: 1s ease;
 }
 
 .btn_proto {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    align-items: center;
+    align-items: flex-start;
     position: absolute;
     gap: 8px;
-    left: 8px;
+    left: 0%;
+}
+
+.boton-ocultar {
+    position: absolute;
+    animation: slideOutLeft 0.5s forwards;
+}
+.boton-mostrar {
+    display: flex;
+    /* Tus estilos para el botón pequeño */
+    position: absolute;
+    position: absolute;
+    left: -100%;
+    animation: slideInLeft 0.5s forwards;
+}
+
+@keyframes slideOutLeft {
+    from { left: 1px; }
+    to { left: -100%; }
+}
+
+@keyframes slideInLeft {
+    from { left: -100%; }
+    to { left: 1px; }
 }
 
 /* _______________________SECCIONES__________________________ */
@@ -272,7 +295,7 @@ button:hover {
     overflow-x: auto; /* Permite el desplazamiento horizontal */
     overflow-y: hidden;
     border: 1px solid rgba(0, 0, 0, 0);
-    max-height: 100vh;
+    max-height: 150vh;
     min-height: 100vh;
     min-width: 50vh;
 }

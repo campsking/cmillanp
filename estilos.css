@@ -1,23 +1,10 @@
 .threejs-background {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1; /* Detrás del contenido */
+    position: relative;
+    z-index: -10;
 }
 
-.background_three {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1; /* Detrás del contenido */
-}
 
 html, body {
-    background-color: #1f1f1f;
     margin: 0;
     padding: 0;
     height: 100%;
@@ -26,8 +13,8 @@ html, body {
 
 /* Asegúrate de que los elementos de contenido tengan un z-index mayor que -1 si es necesario */
 .contenido-principal {
-    position: relative; /* o absolute, según la necesidad */
-    z-index: 1; /* o un número mayor si es necesario */
+    position: relative; 
+    z-index: 10; /* o un número mayor si es necesario */
     /* Más estilos para tu contenido aquí */
 }
 
@@ -75,7 +62,6 @@ button:hover {
 }
 .boton-mostrar {
     display: flex;
-    /* Tus estilos para el botón pequeño */
     position: absolute;
     position: absolute;
     left: -100%;
@@ -105,13 +91,13 @@ button:hover {
     color: white;
     overflow: hidden;
 }
-/*
+
 #seccion1 {
     background-image: url('https://drive.google.com/uc?export=view&id=1O8KzOLOLgGwPHDIpyKaPrXS24NQfUGAo');
     background-size: cover;
     background-repeat: no-repeat;
-    z-index: -1;
-}____*/
+    z-index: 1;
+}
 
 #seccion1 { background-image: linear-gradient(to bottom, #1f1f1f, #2f2f2f) }
 #seccion2 { background-color: #1f1f1f; }
@@ -157,6 +143,7 @@ button:hover {
     justify-content: center;
     gap: 16px;
     overflow-y: auto;
+    overflow-x: hidden;
     margin: 8px;
 
 }
@@ -177,8 +164,6 @@ button:hover {
     border-radius: 10px;
     padding: 24px;
     max-width: 500px;
-    /* min-width: 330px; */
-    /* min-height: 200px; */
     position: relative;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: transform 0.5s ease, box-shadow 0.5s ease;
@@ -188,6 +173,7 @@ button:hover {
     background-color: #2f2f2f;
     align-content: flex-start;
     align-items: flex-end;
+    user-select: none;
 }
 
 .card-icon {
@@ -292,7 +278,7 @@ button:hover {
 #prototipo1 iframe {
     margin-top: -55%;
     margin-bottom: -60%;
-    overflow-x: auto; /* Permite el desplazamiento horizontal */
+    overflow-x: auto; 
     overflow-y: hidden;
     border: 1px solid rgba(0, 0, 0, 0);
     max-height: 150vh;
@@ -300,10 +286,11 @@ button:hover {
     min-width: 50vh;
 }
 
+
 #prototipo2 iframe {
     margin-top: -55%;
     margin-bottom: -60%;
-    overflow-x: auto; /* Permite el desplazamiento horizontal */
+    overflow-x: auto; 
     overflow-y: hidden;
     border: 1px solid rgba(0, 0, 0, 0);
     max-height: 100vh;
@@ -331,6 +318,10 @@ button:hover {
     align-items: center;
     justify-content: flex-end;
     height: 100vh;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    overflow: hidden;
+    overflow-x: hidden;
 }
 
 #seccion3.seccion.activa h2 {
@@ -409,6 +400,7 @@ button[type="submit"] {
     width: 100%;
     height: 48px;
     margin-top: 16px;
+    border-radius: 12px;
 }
 
 button[type="submit"]:hover {
@@ -417,5 +409,3 @@ button[type="submit"]:hover {
     color: #00e1ff;
     height: 48px;
 }
-
-/* __________Media queries para diferentes tamaños de pantalla___________ */

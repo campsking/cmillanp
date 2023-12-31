@@ -1,14 +1,12 @@
-.threejs-background {
-    position: relative;
-    z-index: -10;
-}
-
-
 html, body {
     margin: 0;
     padding: 0;
     height: 100%;
     /*overflow: hidden; /* Evita barras de desplazamiento innecesarias */
+}
+
+#threejs-background {
+    display: none;
 }
 
 /* Asegúrate de que los elementos de contenido tengan un z-index mayor que -1 si es necesario */

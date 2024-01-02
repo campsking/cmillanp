@@ -99,7 +99,7 @@ button:hover {
     z-index: 1;
 }
 
-#seccion1 { background-image: linear-gradient(to bottom, #1f1f1f, #2f2f2f) }
+#seccion1 { background-image: linear-gradient(to bottom, #121212, #2f2f2f) }
 #seccion2 { background-color: #1f1f1f; }
 #seccion3 { background-color: #2f2f2f; }
 #seccion4 { background-color: #3f3f3f; }
@@ -409,38 +409,7 @@ button[type="submit"]:hover {
     color: #00e1ff;
     height: 48px;
 }
-
-
-
-
-
-
-
-.square {
-    width: 200px; /* Ajusta al tamaño que prefieras para el cuadrado */
-    height: 200px; /* Ajusta al tamaño que prefieras para el cuadrado */
-    background-color: orange; /* El color del cuadrado */
-    border-radius: 20px; /* Esto crea bordes redondeados en el cuadrado */
-    position: relative;
-    overflow: hidden; /* Esto ocultará las partes del círculo que excedan los límites del cuadrado */
-  }
-  
-  .circle {
-    width: 70px; /* Tamaño del círculo */
-    height: 70px; /* Tamaño del círculo */
-    background-color: blue; /* El color del círculo */
-    border-radius: 50%; /* Esto hace que el div sea un círculo */
-    position: absolute;
-    bottom: -50px; /* Posiciona la mitad del círculo fuera del cuadrado */
-    right: -50px; /* Posiciona la mitad del círculo fuera del cuadrado */
-    cursor: pointer; /* Cambia el aspecto del cursor al pasar por encima del círculo */
-    border: 15px solid transparent; /* Borde transparente que crea la separación */
-    box-sizing: border-box; /* Asegura que el borde se incluya en la anchura y altura total del círculo */
-  }
-
-
-  
-  
+ 
   
   .circle:hover {
     cursor: pointer; /* Cambia el cursor a una mano cuando se pasa el ratón por encima */

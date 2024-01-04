@@ -22,8 +22,8 @@ secciones.forEach((seccion, indice) => {
 const galeria = document.querySelector('.galeria');
 galeria.addEventListener('mousedown', (e) => {
     isDragging = true;
-    startX = e.pageX - galeria.offsetLeft;
-    scrollLeft = galeria.scrollLeft;
+    startY = e.pageY - galeria.offsetTop; // Cambio a coordenadas verticales
+    scrollTop = galeria.scrollTop;
 });
 
 window.addEventListener('mouseup', () => {
@@ -33,9 +33,9 @@ window.addEventListener('mouseup', () => {
 galeria.addEventListener('mousemove', (e) => {
     if (!isDragging) return;
     e.preventDefault();
-    const x = e.pageX - galeria.offsetLeft;
-    const walk = (x - startX) * 2; // Multiplicador de velocidad de arrastre
-    galeria.scrollLeft = scrollLeft - walk;
+    const y = e.pageY - galeria.offsetTop; // Cambio a coordenadas verticales
+    const walk = (y - startY) * 2; // Multiplicador de velocidad de arrastre
+    galeria.scrollTop = scrollTop - walk; // Cambio a desplazamiento vertical
 });
 
 function abrirEnPantallaCompleta() {

@@ -1,4 +1,5 @@
-html, body {
+html,
+body {
     margin: 0;
     padding: 0;
     height: 100%;
@@ -6,15 +7,18 @@ html, body {
 }
 
 #threejs-background {
-    width: 800px; /* o el tamaño que desees */
-    height: 600px; /* o el tamaño que desees */
+    width: 800px;
+    /* o el tamaño que desees */
+    height: 600px;
+    /* o el tamaño que desees */
     /* Otras propiedades de estilo como posición, margen, etc. */
 }
 
 /* Asegúrate de que los elementos de contenido tengan un z-index mayor que -1 si es necesario */
 .contenido-principal {
-    position: relative; 
-    z-index: 10; /* o un número mayor si es necesario */
+    position: relative;
+    z-index: 10;
+    /* o un número mayor si es necesario */
     /* Más estilos para tu contenido aquí */
 }
 
@@ -38,7 +42,7 @@ button {
     align-items: center;
     padding: 16px;
     transition: 1s ease;
-    
+
 }
 
 button:hover {
@@ -62,6 +66,7 @@ button:hover {
     position: absolute;
     animation: slideOutLeft 0.5s forwards;
 }
+
 .boton-mostrar {
     display: flex;
     position: absolute;
@@ -71,13 +76,23 @@ button:hover {
 }
 
 @keyframes slideOutLeft {
-    from { left: 1px; }
-    to { left: -100%; }
+    from {
+        left: 1px;
+    }
+
+    to {
+        left: -100%;
+    }
 }
 
 @keyframes slideInLeft {
-    from { left: -100%; }
-    to { left: 1px; }
+    from {
+        left: -100%;
+    }
+
+    to {
+        left: 1px;
+    }
 }
 
 /* _______________________SECCIONES__________________________ */
@@ -101,10 +116,21 @@ button:hover {
     z-index: 1;
 }
 
-#seccion1 { background-image: linear-gradient(to bottom, #121212, #2f2f2f) }
-#seccion2 { background-color: #1f1f1f; }
-#seccion3 { background-color: #2f2f2f; }
-#seccion4 { background-color: #3f3f3f; }
+#seccion1 {
+    background-image: linear-gradient(to bottom, #121212, #2f2f2f)
+}
+
+#seccion2 {
+    background-color: #1f1f1f;
+}
+
+#seccion3 {
+    background-color: #2f2f2f;
+}
+
+#seccion4 {
+    background-color: #3f3f3f;
+}
 
 .seccion.activa {
     height: 70vh;
@@ -167,7 +193,7 @@ button:hover {
     padding: 24px;
     max-width: 500px;
     position: relative;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     transition: transform 0.5s ease, box-shadow 0.5s ease;
     display: flex;
     flex-direction: column;
@@ -200,7 +226,7 @@ button:hover {
 }
 
 .card:hover {
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
     transform: scale(1.01);
 }
 
@@ -209,70 +235,112 @@ button:hover {
 }
 
 
-
-
-
 /* ______________________GALERIA - SECCION 2___________________________________ */
 
 .galeria {
-    display: none;
-    overflow-x: auto;
-    white-space: nowrap;
-    height: 100%;
-    gap: 8px;
-    padding: 16px;
-}
-
-.elemento-galeria {
-    flex: 0 0 auto; 
-}
-
-.elemento-galeria img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 16px;
-}
-
-.seccion.activa .galeria {
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: auto;
+    overflow-x: hidden;
+    max-width: 1800px;
+    height: 100%;
+}
+
+
+
+.proyecto-galeria {
+    margin: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Cambiado a columna para acomodar imágenes y texto */
+    /* align-items: flex-start; */
+    /* Agrega espacio entre proyectos */
+
+}
+
+/* .imagen_proyecto {
+    display: flex;
+    align-content: center;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    justify-content: flex-start
+} */
+
+
+.imagenes_proyecto-galeria {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    justify-content: center;
+    gap: 16px;
+    overflow: auto;
     flex-direction: row;
 }
 
-#seccion2.activa h2 {
+.imagenes_proyecto-galeria .imagen_proyecto img {
+    border-radius: 16px;
+    min-width: 100px;
+    max-height: 60vh;
+}
+
+.texto-proyecto {
+    font-family: 'Cairo', sans-serif;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    justify-content: flex-start;
+    flex-direction: row;
+    gap: 8px;
+    align-items: center;
+}
+
+#seccion2.seccion.activa .galeria {
     display: flex;
 }
 
-#seccion3.activa h2 {
-    display: flex;
-    position: relative;
-    margin-bottom: 20px;
+#seccion2 .galeria {
+    display: none;
 }
+
+#seccion2.activa h2 {
+    display: none;
+}
+
+
 
 #seccion4.activa #formularioContacto {
-    display: block; /* Muestra el formulario cuando la sección 4 está activa */
+    display: block;
+    /* Muestra el formulario cuando la sección 4 está activa */
 }
 
 /* Estilo para todas las barras de desplazamiento */
 ::-webkit-scrollbar {
-    width: 8px; /* Ancho de la barra de desplazamiento horizontal */
-    height: 8px; /* Altura de la barra de desplazamiento vertical */
+    width: 8px;
+    /* Ancho de la barra de desplazamiento horizontal */
+    height: 8px;
+    /* Altura de la barra de desplazamiento vertical */
 }
 
 /* Estilo para el rastro de la barra (la parte que no es el pulgar) */
 ::-webkit-scrollbar-track {
-    background: transparent; /* Puedes cambiar esto si quieres un color de fondo */
+    background: transparent;
+    /* Puedes cambiar esto si quieres un color de fondo */
 }
 
 /* Estilo para el pulgar de la barra de desplazamiento (la parte que se mueve) */
 ::-webkit-scrollbar-thumb {
-    background: #888; /* Color del pulgar */
-    border-radius: 10px; /* Bordes redondeados para el pulgar */
+    background: #888;
+    /* Color del pulgar */
+    border-radius: 10px;
+    /* Bordes redondeados para el pulgar */
 }
 
 /* Cambiar el color del pulgar al pasar el ratón por encima */
 ::-webkit-scrollbar-thumb:hover {
-    background: #555; /* Color del pulgar al pasar el ratón */
+    background: #555;
+    /* Color del pulgar al pasar el ratón */
 }
 
 /* ____________________PROTOTIPOS FIGMA - SECCION 3_________________________________ */
@@ -281,7 +349,7 @@ button:hover {
 #prototipo1 iframe {
     margin-top: -55%;
     margin-bottom: -60%;
-    overflow-x: auto; 
+    overflow-x: auto;
     overflow-y: hidden;
     border: 1px solid rgba(0, 0, 0, 0);
     max-height: 150vh;
@@ -293,7 +361,7 @@ button:hover {
 #prototipo2 iframe {
     margin-top: -55%;
     margin-bottom: -60%;
-    overflow-x: auto; 
+    overflow-x: auto;
     overflow-y: hidden;
     border: 1px solid rgba(0, 0, 0, 0);
     max-height: 100vh;
@@ -321,8 +389,8 @@ button:hover {
     align-items: center;
     justify-content: flex-end;
     height: 100vh;
-    margin-top: 5%;
-    margin-bottom: 5%;
+    margin-top: 6vh;
+    margin-bottom: 6vh;
     overflow: hidden;
     overflow-x: hidden;
 }
@@ -330,6 +398,7 @@ button:hover {
 #seccion3.seccion.activa h2 {
     display: none;
 }
+
 /* _______________________CONTACTO - SECCION 4______________________________*/
 
 #seccion4.seccion.activa {
@@ -348,10 +417,8 @@ button:hover {
 }
 
 .campo-formulario {
-    display: flex;
-    /* padding: 16px; */
+    display: flex;    
     align-items: flex-start;
-    /* gap: 10px; */
     align-self: stretch;
     flex-direction: column;
 }
@@ -368,28 +435,29 @@ button:hover {
     font-family: 'Cairo', sans-serif;
     font-size: larger;
     padding: 6px;
-    
+
 }
+
 #email {
     min-height: 24px;
     font-family: 'Cairo', sans-serif;
     font-size: larger;
     padding: 6px;
-    
+
 }
+
 .campo-formulario input[type="text"],
 .campo-formulario input[type="email"],
 .campo-formulario textarea {
     border-radius: 8px;
-    background-color: #2f2f2f; /* Fondo oscuro */
-    color: white; /* Texto blanco */
-    border: 1px solid #4f4f4f; /* Borde sutil */
+    background-color: #2f2f2f;    /* Fondo oscuro */
+    color: white;    /* Texto blanco */
+    border: 1px solid #4f4f4f;    /* Borde sutil */
     align-self: stretch;
     min-height: 80px;
 }
 
 .campo-formulario textarea {
-    /* height: 100px; */
     background-color: #2f2f2f;
     font-size: larger;
     padding: 16px;
@@ -412,9 +480,8 @@ button[type="submit"]:hover {
     color: #00e1ff;
     height: 48px;
 }
- 
-  
-  .circle:hover {
-    cursor: pointer; /* Cambia el cursor a una mano cuando se pasa el ratón por encima */
-  }
-  
+
+
+.circle:hover {
+    cursor: pointer;
+}

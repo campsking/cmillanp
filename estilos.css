@@ -238,16 +238,47 @@ button:hover {
 /* ______________________GALERIA - SECCION 2___________________________________ */
 
 .galeria {
+    display: none;
+    overflow-x: auto;
+    white-space: nowrap;
+    height: 60vh;
+    gap: 8px;
+    padding: 16px;
+}
+
+.elemento-galeria {
+    flex: 0 0 auto; 
+}
+
+.elemento-galeria img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 16px;
+}
+
+.seccion.activa .galeria {
+    display: flex;
+    flex-direction: row;
+}
+
+#seccion2.activa h2 {
+    display: flex;
+}
+
+#seccion3.activa h2 {
+    display: flex;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+/* .galeria {
     display: flex;
     flex-direction: column;
     align-items: center;
     overflow-y: auto;
-    /* overflow-x: hidden; */
     max-width: 1800px;
-    /* height: 100%; */
 }
-
-
 
 .proyecto-galeria {
     margin: 16px;
@@ -255,29 +286,16 @@ button:hover {
     flex-direction: column;
     align-items: center;
     flex-direction: row; 
-    /* Cambiado a columna para acomodar imágenes y texto */
-    /* align-items: flex-start; */
-    /* Agrega espacio entre proyectos */
-
 }
-
-/* .imagen_proyecto {
-    display: flex;
-    align-content: center;
-    flex-wrap: nowrap;
-    flex-direction: row;
-    justify-content: flex-start
-} */
-
 
 .imagenes_proyecto-galeria {
     display: flex;
     flex-direction: row;
-    overflow-x: auto; /* habilita scroll horizontal */
-    overflow-y: hidden; /* previene scroll vertical */
-    align-items: start; /* alinea las imágenes al inicio (arriba) del contenedor */
-    width: 100%; /* o un ancho fijo si lo prefieres */
-    max-width: 1800px; /* esto depende de tu diseño */
+    overflow-x: auto;
+    overflow-y: hidden;
+    align-items: start;
+    width: 100%;
+    max-width: 1800px;
     gap: 16px;
 }
 
@@ -285,7 +303,7 @@ button:hover {
     border-radius: 16px;
     min-width: 100px;
     max-height: 60vh;
-}
+} */
 
 .texto-proyecto {
     font-family: 'Cairo', sans-serif;

@@ -266,6 +266,14 @@ button:hover {
     display: flex;
 }
 
+#seccion2.activa h3 {
+    display: flex;
+}
+
+#seccion2.activa p {
+    display: flex;
+}
+
 #seccion3.activa h2 {
     display: flex;
     position: relative;

@@ -313,7 +313,7 @@ button:hover {
     max-height: 60vh;
 } */
 
-.texto-proyecto {
+#seccion2.seccion.activa .texto-proyecto {
     font-family: 'Cairo', sans-serif;
     display: flex;
     flex-wrap: wrap;
@@ -322,6 +322,10 @@ button:hover {
     flex-direction: row;
     gap: 8px;
     align-items: center;
+}
+
+.texto-proyecto {
+    display: none;
 }
 
 #seccion2.seccion.activa {
@@ -384,7 +388,7 @@ button:hover {
     overflow-x: auto;
     overflow-y: hidden;
     border: 1px solid rgba(0, 0, 0, 0);
-    max-height: 150vh;
+    max-height: 100%;
     min-height: 100vh;
     min-width: 50vh;
 }
@@ -396,7 +400,7 @@ button:hover {
     overflow-x: auto;
     overflow-y: hidden;
     border: 1px solid rgba(0, 0, 0, 0);
-    max-height: 100vh;
+    max-height: 100%;
     min-height: 100vh;
     min-width: 50vh;
 }
@@ -410,6 +414,7 @@ button:hover {
 }
 
 #seccion3.seccion.activa {
+    overflow: auto;
     display: flex;
     align-items: center;
     justify-content: flex-end;

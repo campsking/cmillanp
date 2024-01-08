@@ -14,7 +14,14 @@ function cambiarSeccionActiva(nuevoIndice) {
 
 // Evento de clic para cambiar secciones
 secciones.forEach((seccion, indice) => {
-    seccion.addEventListener('click', () => cambiarSeccionActiva(indice));
+    seccion.addEventListener('click', () => {
+        // Verificar si la sección ya está activa
+        if (seccion.classList.contains('activa')) {
+            seccion.classList.remove('activa'); // Desactivar la sección si ya está activa
+        } else {
+            cambiarSeccionActiva(indice); // Activar la sección si no está activa
+        }
+    });
 });
 
 

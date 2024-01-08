@@ -117,7 +117,7 @@ button:hover {
 }
 
 #seccion1 {
-    background-image: linear-gradient(to bottom, #121212, #2f2f2f)
+    background-color: #121212;
 }
 
 #seccion2 {
@@ -133,7 +133,7 @@ button:hover {
 }
 
 .seccion.activa {
-    height: 70vh;
+    height: 100vh;
 }
 
 .seccion.inactiva {

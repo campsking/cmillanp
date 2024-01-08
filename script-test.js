@@ -169,6 +169,8 @@ renderer.domElement.addEventListener('touchmove', event => {
         x: event.touches[0].clientX,
         y: event.touches[0].clientY
     };
+    // Evitar la recarga de la página al hacer drag hacia abajo
+    event.preventDefault();
 });
 
 

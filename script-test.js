@@ -105,6 +105,72 @@ function animate() {
 
 animate();
 
+// Evento para iniciar el arrastre
+renderer.domElement.addEventListener('mousedown', event => {
+    isDragging = true;
+    previousMousePosition = {
+        x: event.clientX,
+        y: event.clientY
+    };
+});
+
+// Evento para detener el arrastre
+renderer.domElement.addEventListener('mouseup', () => {
+    isDragging = false;
+});
+
+// Evento para el arrastre en sí
+renderer.domElement.addEventListener('mousemove', event => {
+    if (!isDragging) return;
+
+    const deltaMove = {
+        x: event.clientX - previousMousePosition.x,
+        y: event.clientY - previousMousePosition.y
+    };
+
+    const rotationSpeed = 0.005;
+
+    icosahedron.rotation.x += deltaMove.y * rotationSpeed;
+    icosahedron.rotation.y += deltaMove.x * rotationSpeed;
+
+    previousMousePosition = {
+        x: event.clientX,
+        y: event.clientY
+    };
+});
+
+// Eventos táctiles para dispositivos móviles
+renderer.domElement.addEventListener('touchstart', event => {
+    isDragging = true;
+    previousMousePosition = {
+        x: event.touches[0].clientX,
+        y: event.touches[0].clientY
+    };
+});
+
+renderer.domElement.addEventListener('touchend', () => {
+    isDragging = false;
+});
+
+renderer.domElement.addEventListener('touchmove', event => {
+    if (!isDragging || event.touches.length !== 1) return;
+
+    const deltaMove = {
+        x: event.touches[0].clientX - previousMousePosition.x,
+        y: event.touches[0].clientY - previousMousePosition.y
+    };
+
+    const rotationSpeed = 0.005;
+
+    icosahedron.rotation.x += deltaMove.y * rotationSpeed;
+    icosahedron.rotation.y += deltaMove.x * rotationSpeed;
+
+    previousMousePosition = {
+        x: event.touches[0].clientX,
+        y: event.touches[0].clientY
+    };
+});
+
 
 
 

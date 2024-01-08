@@ -3,6 +3,7 @@ body {
     margin: 0;
     padding: 0;
     height: 100%;
+    background-color: #121212;
     /*overflow: hidden; /* Evita barras de desplazamiento innecesarias */
 }
 
@@ -110,14 +111,7 @@ button:hover {
 }
 
 #seccion1 {
-    background-image: url('https://drive.google.com/uc?export=view&id=1O8KzOLOLgGwPHDIpyKaPrXS24NQfUGAo');
-    background-size: cover;
-    background-repeat: no-repeat;
-    z-index: 1;
-}
-
-#seccion1 {
-    background-color: #121212;
+    background-color: #151515;
 }
 
 #seccion2 {
@@ -133,7 +127,7 @@ button:hover {
 }
 
 .seccion.activa {
-    height: 100vh;
+    height: 70vh;
 }
 
 .seccion.inactiva {
@@ -158,10 +152,16 @@ button:hover {
 
 }
 
+#seccion1.seccion.activa {
+    height: 80vh;
+
+}
+
 #seccion1 .contenido {
     display: none;
     color: #c4c4c4;
     max-width: 1700px;
+    height: 100vh;
 }
 
 #seccion1.seccion.activa .contenido {
@@ -437,6 +437,18 @@ button:hover {
 }
 
 /* _______________________CONTACTO - SECCION 4______________________________*/
+
+.redes-sociales {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    margin: 16px;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+}
+
+
+
 
 #seccion4.seccion.activa {
     display: flex;

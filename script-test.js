@@ -38,42 +38,91 @@ icosahedron.userData.rotationSpeed = new THREE.Vector3(
     0.0006  // Z axis
 );
 
-// Acceder a los vértices de BufferGeometry y crear cubos en cada vértice
 const positionAttribute = icosahedronGeometry.attributes.position;
-const cubeGeometry = new THREE.BoxGeometry(1, 1, 1); // Definir la geometría del cubo una sola vez
+// Usar una variable diferente para la geometría del mini icosaedro
+const miniIcosahedronGeometry = new THREE.IcosahedronGeometry(0.7, 0); // Definir la geometría del icosaedro
 const createdPositions = []; // Almacenar las posiciones creadas
+
 for (let i = 0; i < positionAttribute.count; i++) {
     const vertex = new THREE.Vector3();
     vertex.fromBufferAttribute(positionAttribute, i);
 
-    // Verificar si ya se creó un cubo en esta posición
+    // Verificar si ya se creó un icosaedro en esta posición
     if (!createdPositions.some(pos => pos.equals(vertex))) {
-        const cubeMaterial = new THREE.MeshStandardMaterial({ color: 0x00ff00 });
-        const cube = new THREE.Mesh(cubeGeometry, cubeMaterial);
+        const icosahedronMaterial = new THREE.MeshStandardMaterial({ color: 0xffffff });
+        const miniIcosahedron = new THREE.Mesh(miniIcosahedronGeometry, icosahedronMaterial);
 
         // Aplicar una posición inicial desplazada en función del índice
-        cube.position.copy(vertex).multiplyScalar(1.1);
+        miniIcosahedron.position.copy(vertex).multiplyScalar(1.1);
 
-        // Agregar el cubo como hijo del icosaedro
-        icosahedron.add(cube);
+        // Agregar el mini icosaedro como hijo del icosaedro original
+        icosahedron.add(miniIcosahedron);
 
         // Almacenar la posición creada
         createdPositions.push(vertex);
 
-        // Agregar una velocidad de rotación a cada cubo
-        cube.userData.rotationSpeed = new THREE.Vector3(
+        // Agregar una velocidad de rotación a cada mini icosaedro
+        miniIcosahedron.userData.rotationSpeed = new THREE.Vector3(
             Math.random() * 0.01 - 0.006, // Rotación en el eje X
             Math.random() * 0.01 - 0.006, // Rotación en el eje Y
             Math.random() * 0.01 - 0.006  // Rotación en el eje Z
         );
+        // Paso 1: Agregar un indicador para rastrear si el mini icosaedro ha sido clickeado
+        miniIcosahedron.userData.clicked = false;
     }
 }
 
-// estilo del cubo
-icosahedron.children.forEach(cube => {
-    cube.visible = true;
-    cube.material.color.set(0xffffff);
+// Estilo de los icosaedros
+icosahedron.children.forEach(miniIcosahedron => {
+    miniIcosahedron.visible = true; // Asegurarse de que el icosaedro esté visible
 });
+
+// Paso 2: Configurar el controlador de eventos de clic
+function onDocumentMouseDown(event) {
+    event.preventDefault();
+
+    // Calcular la posición del ratón en coordenadas normalizadas (-1 a +1)
+    mouse.x = (event.clientX / renderer.domElement.clientWidth) * 2 - 1;
+    mouse.y = -(event.clientY / renderer.domElement.clientHeight) * 2 + 1;
+
+    // Actualizar el raycaster con la posición del ratón
+    raycaster.setFromCamera(mouse, camera);
+
+    // Calcular objetos intersectados
+    const intersects = raycaster.intersectObjects(icosahedron.children);
+
+    // Cambiar el color del primer objeto intersectado
+    if (intersects.length > 0) {
+        const object = intersects[0].object;
+        if (!object.userData.clicked) {
+            object.material.color.set(0xFF6600); // Color naranja
+            object.userData.clicked = true;
+        } else {
+            object.material.color.set(0xffffff); // Color original
+            object.userData.clicked = false;
+        }
+    }
+}
+
+// Función para comprobar si todos los mini icosaedros son naranjas
+function allIcosahedronsAreOrange() {
+    return icosahedron.children.every(miniIcosahedron =>
+        miniIcosahedron.material.color.equals(new THREE.Color(0xFF6600))
+    );
+}
+
+// Función para reiniciar los colores de los mini icosaedros
+function resetMiniIcosahedronsColor() {
+    icosahedron.children.forEach(miniIcosahedron => {
+        miniIcosahedron.material.color.set(0xffffff); // Color por defecto
+        miniIcosahedron.userData.clicked = false;
+    });
+}
+
+// Agregar el controlador de eventos de clic al documento
+document.addEventListener('mousedown', onDocumentMouseDown, false);
+
+
 
 // Raycaster para interacción
 const raycaster = new THREE.Raycaster();
@@ -83,10 +132,27 @@ window.addEventListener('mousemove', event => {
     mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
 });
 
+// Variables globales para controlar la animación
+let isAnimating = false;
+let rotationSpeed = { x: 0.005, y: 0.005 }; // Velocidad normal de rotación
+let maxRotationSpeed = { x: 0.1, y: 0.1 }; // Velocidad máxima para la animación rápida
 
 // Función de animación
 function animate() {
     requestAnimationFrame(animate);
+
+    // Comprobar si todos los mini icosaedros son naranjas
+    if (allIcosahedronsAreOrange()) {
+        // Aumentar la velocidad de rotación para el efecto de giro rápido
+        icosahedron.rotation.x += 0.1;
+        icosahedron.rotation.y += 0.1;
+
+        // Puedes usar un temporizador o una condición para determinar cuándo detener el giro y reiniciar los colores
+        setTimeout(() => {
+            resetMiniIcosahedronsColor();
+            // Restablecer la rotación normal del icosaedro grid aquí si es necesario
+        }, 1000); // Ajusta este tiempo según la duración deseada del giro
+    }
 
     // Rotación del icosaedro basado en su velocidad de rotación
     icosahedron.rotation.x += icosahedron.userData.rotationSpeed.x;

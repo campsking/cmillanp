@@ -1,12 +1,21 @@
 const scene = new THREE.Scene();
 scene.background = new THREE.Color(0x1f1f1f);
 
-const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+const camera = new THREE.PerspectiveCamera(75, window.innerWidth / (window.innerHeight * 0.6), 0.1, 1000);
 camera.position.z = 20;
 
 const renderer = new THREE.WebGLRenderer();
-renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.setSize(window.innerWidth, window.innerHeight * 0.6); // Cambiar aquí para el alto
 document.body.appendChild(renderer.domElement);
+
+// Manejador de eventos para ajustar el tamaño cuando se cambia el tamaño de la ventana
+window.addEventListener('resize', onWindowResize, false);
+
+function onWindowResize() {
+    camera.aspect = window.innerWidth / (window.innerHeight * 0.6);
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight * 0.6);
+}
 
 // Agregar Luz Ambiental y Direccional
 const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
@@ -77,9 +86,11 @@ let scalingDown = false;
 let scalingUp = false;
 let scaleProgress = 0;
 
+// Manejador de eventos para el clic
 function onMouseClick(event) {
-    mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-    mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+    var rect = renderer.domElement.getBoundingClientRect();
+    mouse.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
+    mouse.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
 
     raycaster.setFromCamera(mouse, camera);
     const intersects = raycaster.intersectObjects(group.children);
@@ -116,6 +127,15 @@ function onMouseClick(event) {
     }
 }
 window.addEventListener('click', onMouseClick, false);
+
+// Manejador de eventos para el redimensionamiento de la ventana
+window.addEventListener('resize', onWindowResize, false);
+
+function onWindowResize(){
+    camera.aspect = window.innerWidth / (window.innerHeight * 0.6);
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight * 0.6);
+}
 
 // Función de animación
 function animate() {

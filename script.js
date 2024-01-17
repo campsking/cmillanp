@@ -14,8 +14,12 @@ function cambiarSeccionActiva(nuevoIndice) {
 
 // Evento de clic para cambiar secciones
 secciones.forEach((seccion, indice) => {
-    seccion.addEventListener('click', () => {
-        // Verificar si la sección ya está activa
+    seccion.addEventListener('click', (evento) => {
+        // Verificar si el clic fue dentro de un elemento de la galería
+        if (evento.target.closest('.elemento-galeria')) {
+            return; // No hacer nada si el clic fue en la galería
+        }
+
         if (seccion.classList.contains('activa')) {
             seccion.classList.remove('activa'); // Desactivar la sección si ya está activa
         } else {
@@ -24,25 +28,35 @@ secciones.forEach((seccion, indice) => {
     });
 });
 
-
-// Agregar eventos para arrastre en la galería en PC
+// Agregar evento para desplazamiento con la rueda del ratón en la galería
 const galeria = document.querySelector('.galeria');
-galeria.addEventListener('mousedown', (e) => {
-    isDragging = true;
-    startY = e.pageY - galeria.offsetTop; // Cambio a coordenadas verticales
-    scrollTop = galeria.scrollTop;
+galeria.addEventListener('wheel', (e) => {
+    // Calcular la posición máxima de desplazamiento horizontal
+    const maxScrollLeft = galeria.scrollWidth - galeria.clientWidth;
+
+    // Comprobar si la galería está al principio o al final de su desplazamiento horizontal
+    if ((galeria.scrollLeft === 0 && e.deltaY < 0) || (galeria.scrollLeft === maxScrollLeft && e.deltaY > 0)) {
+        // No hacer nada si la galería está en uno de sus extremos
+        return;
+    }
+
+    // Prevenir el desplazamiento vertical predeterminado y desplazar horizontalmente
+    e.preventDefault();
+    const desplazamiento = e.deltaY * 0.5; // Ajustar según sea necesario
+    galeria.scrollLeft += desplazamiento;
 });
 
-window.addEventListener('mouseup', () => {
+galeria.addEventListener('mouseup', (e) => {
     isDragging = false;
+    e.stopPropagation(); // Previene la propagación del evento al elemento padre
 });
 
 galeria.addEventListener('mousemove', (e) => {
     if (!isDragging) return;
     e.preventDefault();
-    const y = e.pageY - galeria.offsetTop; // Cambio a coordenadas verticales
-    const walk = (y - startY) * 2; // Multiplicador de velocidad de arrastre
-    galeria.scrollTop = scrollTop - walk; // Cambio a desplazamiento vertical
+    const x = e.pageX - galeria.offsetLeft; // Cambio a coordenadas horizontales
+    const walk = (x - startX) * 2; // Multiplicador de velocidad de arrastre
+    galeria.scrollLeft = scrollLeft - walk; // Cambio a desplazamiento horizontal
 });
 
 function abrirEnPantallaCompleta() {
@@ -99,6 +113,46 @@ document.querySelectorAll('.card').forEach(card => {
         }
     });
 });
+
+
+document.querySelectorAll('.elemento-galeria').forEach(elemento => {
+    // Inicializar el identificador del temporizador para cada elemento
+    elemento.temporizadorOverlay = null;
+
+    // Manejador para dispositivos táctiles
+    elemento.addEventListener('touchstart', function() {
+        incrementarLikes(this);
+    });
+
+    // Manejador para clic del ratón en modo desktop
+    elemento.addEventListener('click', function() {
+        incrementarLikes(this);
+    });
+});
+
+function incrementarLikes(elemento) {
+    // Activar el overlay
+    let overlay = elemento.querySelector('.overlay');
+    if (overlay) {
+        overlay.style.opacity = 1;
+
+        // Incrementar el contador de likes
+        let contador = elemento.querySelector('.like-counter');
+        if (contador) {
+            contador.textContent = parseInt(contador.textContent) + 1;
+        }
+
+        // Cancelar el temporizador anterior si existe
+        if (elemento.temporizadorOverlay) {
+            clearTimeout(elemento.temporizadorOverlay);
+        }
+
+        // Configurar un nuevo temporizador para ocultar el overlay
+        elemento.temporizadorOverlay = setTimeout(() => {
+            overlay.style.opacity = 0;
+        }, 2000); // Ajustar el tiempo según sea necesario
+    }
+}
 
 
 

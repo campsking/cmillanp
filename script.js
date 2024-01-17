@@ -116,31 +116,57 @@ document.querySelectorAll('.card').forEach(card => {
 
 
 document.querySelectorAll('.elemento-galeria').forEach(elemento => {
-    // Inicializar el identificador del temporizador para cada elemento
-    elemento.temporizadorOverlay = null;
+    // Inicializar el estado para el primer toque
+    elemento.primerToque = true;
 
     // Manejador para dispositivos táctiles
-    elemento.addEventListener('touchstart', function() {
-        incrementarLikes(this);
+    elemento.addEventListener('touchstart', function(event) {
+        
+        event.stopPropagation(); // Detener la propagación del evento
+
+        if (elemento.primerToque) {
+            // Solo mostrar el overlay en el primer toque
+            controlarOverlay(this);
+            elemento.primerToque = false;
+        } else {
+            // Incrementar likes y mostrar overlay en toques subsiguientes
+            incrementarLikes(this);
+        }
     });
 
     // Manejador para clic del ratón en modo desktop
-    elemento.addEventListener('click', function() {
-        incrementarLikes(this);
+    elemento.addEventListener('click', function(event) {
+        manejarInteraccion(this, false); // false indica que no es un evento táctil
     });
 });
 
+function manejarInteraccion(elemento, esTactil) {
+    if (!esTactil || !elemento.primerToque) {
+        // Incrementar el contador de likes solo si no es el primer toque en táctil
+        incrementarLikes(elemento);
+    }
+
+    // Controlar la visualización del overlay
+    controlarOverlay(elemento);
+
+    // Si es un dispositivo táctil, establecer que ya no es el primer toque
+    if (esTactil) {
+        elemento.primerToque = false;
+    }
+}
+
 function incrementarLikes(elemento) {
-    // Activar el overlay
+    let contador = elemento.querySelector('.like-counter');
+    if (contador) {
+        contador.textContent = parseInt(contador.textContent) + 1;
+    }
+}
+
+function controlarOverlay(elemento) {
     let overlay = elemento.querySelector('.overlay');
     if (overlay) {
-        overlay.style.opacity = 1;
-
-        // Incrementar el contador de likes
-        let contador = elemento.querySelector('.like-counter');
-        if (contador) {
-            contador.textContent = parseInt(contador.textContent) + 1;
-        }
+        // Agregar la clase para mostrar el overlay
+        overlay.classList.add('overlay-activo');
 
         // Cancelar el temporizador anterior si existe
         if (elemento.temporizadorOverlay) {
@@ -149,10 +175,16 @@ function incrementarLikes(elemento) {
 
         // Configurar un nuevo temporizador para ocultar el overlay
         elemento.temporizadorOverlay = setTimeout(() => {
-            overlay.style.opacity = 0;
+            overlay.classList.remove('overlay-activo');
+            if (esTactil) {
+                elemento.primerToque = true; // Resetear para dispositivos táctiles
+            }
         }, 2000); // Ajustar el tiempo según sea necesario
     }
 }
+
+
+
 
 
 
